@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AlphaDesk · 量化研究终端 | 产品文档</title>
+<meta name="description" content="AlphaDesk 个人量化研究终端: 多因子选股、自然语言选股、无前视偏差回测、AI 自我进化、一机一码私有化部署。" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ 顶栏 ============ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">🐱 Alpha<b>Desk</b></div>
+    <nav class="nav">
+      <a href="#intro">产品介绍</a>
+      <a href="#features">核心功能</a>
+      <a href="#workflow">使用流程</a>
+      <a href="#deploy">部署与授权</a>
+      <a href="#price">购买</a>
+      <a href="#faq">常见问题</a>
+      <a href="#changelog">版本历史</a>
+      <a href="#price" class="buy-btn">立即购买</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ Hero ============ -->
+<div class="hero">
+  <div class="wrap">
+    <h1>AlphaDesk <b>量化研究终端</b></h1>
+    <div class="sub">多因子选股 · 一句话选股 · 无前视偏差回测 · AI 自我进化</div>
+    <div class="risk">⚠️ 本产品为量化研究工具，所有评分、选股结果与 AI 结论仅供学习研究，不构成投资建议。市场有风险，投资需谨慎。</div>
+    <div class="cta">
+      <a class="btn" href="#price">查看价格</a>
+      <a class="btn ghost" href="#features">了解功能</a>
+    </div>
+    <div class="hero-stats">
+      <div><b>60+</b><span>技术因子</span></div>
+      <div><b>5000+</b><span>A股 + 港股全覆盖</span></div>
+      <div><b>3</b><span>选股入口</span></div>
+      <div><b>7 天</b><span>免费试用</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 产品介绍 ============ -->
+<section id="intro">
+  <div class="wrap">
+    <h2 class="sec-title">产品介绍</h2>
+    <div class="sec-sub">装在自己电脑上的量化研究工作台，数据留在本机，不注册、不登录。</div>
+    <div class="card">
+      <p style="margin:0;color:var(--ink-2)">
+        AlphaDesk 是一个面向个人投资者的<b style="color:var(--gold)">单机量化研究终端</b>。
+        它把机构研究员日常用的三件事——<b style="color:var(--gold)">因子筛选、策略回测、AI 辅助分析</b>——
+        做成了一个双击即用的软件：无需 Python 环境、无需配置数据库、无需上传任何数据。
+      </p>
+      <img class="shot" src="assets/dashboard.png" alt="AlphaDesk 仪表盘" />
+    </div>
+
+    <div class="grid3">
+      <div class="card feat">
+        <h3>🎯 为散户真需求设计</h3>
+        <ul>
+          <li>不需要写代码：选股条件用下拉框点选</li>
+          <li>不需要懂英文：全中文界面，指标都说人话</li>
+          <li>不需要盯盘：收盘定时跑，命中推送重点信息</li>
+        </ul>
+      </div>
+      <div class="card feat">
+        <h3>🔒 数据完全私有</h3>
+        <ul>
+          <li>自选池、策略、分析记录全部存本机</li>
+          <li>不注册账号、不收集手机号</li>
+          <li>行情缓存也在本地，断网可看历史数据</li>
+        </ul>
+      </div>
+      <div class="card feat">
+        <h3>🧪 不骗自己</h3>
+        <ul>
+          <li>回测含佣金/印花税/滑点，T+1 开盘成交</li>
+          <li>涨停买不进、跌停卖不掉，真实模拟</li>
+          <li>默认开启样本内外检验，过拟合当场现形</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 核心功能 ============ -->
+<section id="features">
+  <div class="wrap">
+    <h2 class="sec-title">核心功能</h2>
+    <div class="sec-sub">八大模块，覆盖从选股到验证的完整研究链路。</div>
+
+    <div class="card feat">
+      <h3>📊 仪表盘 <span class="tag">日常总览</span></h3>
+      <p class="muted" style="margin:0">自选池一屏总览：实时价格、涨跌幅、算法评分、信号、共舞度、AI 摘要，外加涨跌分布与最新重点信息（公告/新闻/异动）。</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card feat">
+        <h3>💬 智能选股器 <span class="tag">自然语言</span></h3>
+        <p class="muted" style="margin:0 0 8px">用中文描述你想要的形态，系统自动翻译成量化条件并全市场扫描：</p>
+        <ul>
+          <li>"连续下跌、出现止跌信号的股票"</li>
+          <li>"连跌后放量长下影线"</li>
+          <li>"超卖金叉的股票"</li>
+        </ul>
+        <p class="muted" style="margin:6px 0 0">支持"或"逻辑、历史日期回放、一键回测、条件胜率统计、AI 复核、命中入池。</p>
+        <img class="shot" src="assets/screener.png" alt="智能选股器" />
+      </div>
+      <div class="card feat">
+        <h3>🔬 量化实验室 <span class="tag">策略端</span></h3>
+        <p class="muted" style="margin:0 0 8px">自编策略 + 严谨回测：</p>
+        <ul>
+          <li>60+ 因子任意组合，支持区间/上穿/下穿判定</li>
+          <li>逐只模式 / 组合模式（槽位资金管理）</li>
+          <li>滚动窗口样本外检验（Walk-Forward）</li>
+          <li>收益归因、月度收益、最大回撤复盘、卡玛比率</li>
+          <li>一键样本内外切分（前 70% 调参 / 后 30% 验证）</li>
+        </ul>
+        <img class="shot" src="assets/backtest.png" alt="回测结果" />
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="card feat">
+        <h3>🧬 AI 自我进化</h3>
+        <ul>
+          <li>AI 提候选 → 回测验证 → 淘汰迭代</li>
+          <li>样本外门控：验证段不达标无育种资格</li>
+          <li>漏斗评估：先粗筛后精评，省时省算力</li>
+          <li>冠军一键采用为正式策略</li>
+        </ul>
+      </div>
+      <div class="card feat">
+        <h3>🧪 因子 IC 分析</h3>
+        <ul>
+          <li>因子值 vs 未来 20 日收益的截面秩相关</li>
+          <li>稳定性(IR) 与方向一致性双指标判定</li>
+          <li>告诉你哪些因子在当下市场还有效</li>
+        </ul>
+      </div>
+      <div class="card feat">
+        <h3>🔥 重点信息</h3>
+        <ul>
+          <li>公告智能分类：减持/立案/ST/分红/业绩</li>
+          <li>收盘自动扫自选池事件，异常即推</li>
+          <li>选股方案命中增量推送（只推新增）</li>
+        </ul>
+      </div>
+      <div class="card feat">
+        <h3>📈 板块轮动</h3>
+        <ul>
+          <li>行业/概念动量热力，近 5/20 日涨幅</li>
+          <li>主力净流入 + 20 日均线上下分布</li>
+          <li>点击板块看成分股</li>
+        </ul>
+      </div>
+      <div class="card feat">
+        <h3>🧠 AI 分析</h3>
+        <ul>
+          <li>个股多维评分 + 结构化结论</li>
+          <li>技术面无前视（只用当日及之前数据）</li>
+          <li>可配置自有 API 密钥</li>
+        </ul>
+      </div>
+      <div class="card feat">
+        <h3>📰 新闻与运行日志</h3>
+        <ul>
+          <li>个股新闻聚合</li>
+          <li>流水线执行日志（按天轮转，保留 14 天）</li>
+          <li>数据健康检查，异常自动告警</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 使用流程 ============ -->
+<section id="workflow">
+  <div class="wrap">
+    <h2 class="sec-title">使用流程</h2>
+    <div class="sec-sub">从下载到出结果，五分钟。</div>
+    <div class="steps">
+      <div class="step">
+        <b>下载并解压</b>
+        <p>拿到 <code>AlphaDesk</code> 文件夹（含启动器和主程序），解压到任意目录（路径可以有中文）。</p>
+      </div>
+      <div class="step">
+        <b>双击启动</b>
+        <p>Windows 双击 <code>start.bat</code>，Mac 双击 <code>start.command</code>。出现黑窗口即启动成功。</p>
+      </div>
+      <div class="step">
+        <b>浏览器打开</b>
+        <p>访问 <code>http://127.0.0.1:8200</code>。建议拖到浏览器书签栏，下次一键进入。</p>
+      </div>
+      <div class="step">
+        <b>开始研究</b>
+        <p>加几只自选股试试；或直接去「智能选股器」写一句话，例如"连续下跌后出现止跌信号"。</p>
+      </div>
+      <div class="step">
+        <b>激活正式版</b>
+        <p>试用 7 天。到期后界面顶部横幅显示本机机器码，发给卖家获取激活码，粘贴即解锁（一机一码）。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 部署与授权 ============ -->
+<section id="deploy">
+  <div class="wrap">
+    <h2 class="sec-title">部署与授权</h2>
+    <div class="sec-sub">单机授权，无需服务器，无需数据库。</div>
+    <div class="grid2">
+      <div class="card">
+        <h3>💻 运行环境</h3>
+        <div class="kv"><span>Windows</span><b>Win 10 / 11 64 位</b></div>
+        <div class="kv"><span>macOS</span><b>Apple 芯片 / Intel</b></div>
+        <div class="kv"><span>依赖环境</span><b>无需安装 Python</b></div>
+        <div class="kv"><span>网络要求</span><b>联网取行情即可</b></div>
+        <div class="kv"><span>磁盘占用</span><b>约 200 MB</b></div>
+      </div>
+      <div class="card">
+        <h3>🔑 授权机制</h3>
+        <div class="kv"><span>授权方式</span><b>一机一码</b></div>
+        <div class="kv"><span>免费试用</span><b>7 天全功能</b></div>
+        <div class="kv"><span>换机政策</span><b>重新获取激活码</b></div>
+        <div class="kv"><span>数据归属</span><b>100% 本机保存</b></div>
+        <div class="kv"><span>账号体系</span><b>无（不注册不登录）</b></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🛡 数据与隐私</h3>
+      <p class="muted" style="margin:0">
+        所有数据（自选池、策略、回测记录、AI 结论）均保存在软件目录下的 <code>data/</code> 文件夹。
+        软件不向任何服务器上传用户数据；仅在拉取公开行情、调用您自己配置的 AI 接口时联网。
+        换电脑时，整个文件夹拷贝即可带走全部数据。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 购买 ============ -->
+<section id="price">
+  <div class="wrap">
+    <h2 class="sec-title">购买</h2>
+    <div class="sec-sub">先试用 7 天，觉得有用再买。支持微信/支付宝。</div>
+    <div class="price-grid">
+      <div class="card price">
+        <div class="p-name">月卡</div>
+        <div class="p-num">¥__<small> / 月</small></div>
+        <ul>
+          <li>全部功能</li>
+          <li>1 台设备</li>
+          <li>微信答疑</li>
+        </ul>
+        <a class="btn ghost" href="#faq">联系购买</a>
+      </div>
+      <div class="card price hot">
+        <div class="p-name">年卡 <span class="tag">推荐</span></div>
+        <div class="p-num">¥__<small> / 年</small></div>
+        <ul>
+          <li>全部功能</li>
+          <li>1 台设备（可换机）</li>
+          <li>版本升级 + 微信答疑</li>
+          <li>选股方案模板</li>
+        </ul>
+        <a class="btn" href="#faq">立即购买</a>
+      </div>
+    </div>
+    <div class="card" style="text-align:center">
+      <p class="muted" style="margin:0">联系卖家获取激活码 · 微信：<span class="wx">________</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <h2 class="sec-title">常见问题</h2>
+    <div class="sec-sub">点击问题展开答案。</div>
+
+    <div class="faq"><div class="q">软件需要什么配置？会不会很吃电脑？</div>
+      <div class="a">Win10/11 或 macOS 均可，普通办公本足够。计算主要在本机 CPU，日常使用（看盘+收盘跑一次）占用很低；全市场扫描时风扇会响一会儿，属正常。</div></div>
+
+    <div class="faq"><div class="q">需要自己装 Python 或数据库吗？</div>
+      <div class="a">不需要。软件是打包好的独立程序，双击即用。数据使用内置轻量数据库，自动创建、自动维护。</div></div>
+
+    <div class="faq"><div class="q">数据准确吗？和券商软件一致吗？</div>
+      <div class="a">行情来自公开渠道，日线使用前复权口径，与常见行情软件显示一致。数据可能存在延迟或个别缺失，重要决策请以券商软件为准。</div></div>
+
+    <div class="faq"><div class="q">选出来的股票能直接买吗？</div>
+      <div class="a">不能，也不建议。本软件是研究工具：它帮你从几千只股票里缩小范围，最终的买卖判断必须由你自己做出。所有结果均不构成投资建议。</div></div>
+
+    <div class="faq"><div class="q">回测收益很漂亮，实盘能复现吗？</div>
+      <div class="a">不一定，这是所有回测的共性。我们已尽量降低乐观偏差：含交易成本、T+1 开盘成交、涨停买不进、跌停卖不掉、并默认开启样本内外检验。如果样本外一栏是"由正转负，不可用"，请相信这个结论而不是样本内的漂亮数字。</div></div>
+
+    <div class="faq"><div class="q">换电脑了怎么办？</div>
+      <div class="a">把整个软件文件夹拷到新电脑即可（数据跟着走）。激活码与本机绑定，换机需要联系卖家重新获取，年卡用户免费换机。</div></div>
+
+    <div class="faq"><div class="q">我的自选股和策略会被上传吗？</div>
+      <div class="a">不会。软件为纯单机运行，无账号体系，所有数据只在你本机的 data 目录里。断网也能查看已有数据和回测记录。</div></div>
+
+    <div class="faq"><div class="q">AI 功能需要额外付费吗？</div>
+      <div class="a">AI 分析使用你自己配置的接口密钥，费用由你与接口服务商结算，软件本身不额外收费。不配置密钥时，选股、回测、因子分析等核心功能完全可用。</div></div>
+
+    <div class="faq"><div class="q">支持港股吗？</div>
+      <div class="a">支持。选股与回测的范围可选 A 股、港股或两者合并。</div></div>
+
+    <div class="faq"><div class="q">能开发票吗？</div>
+      <div class="a">可以，请联系卖家说明开票信息。</div></div>
+  </div>
+</section>
+
+<!-- ============ 版本历史 ============ -->
+<section id="changelog">
+  <div class="wrap">
+    <h2 class="sec-title">版本历史</h2>
+    <div class="sec-sub">持续更新，年卡免费升级。</div>
+    <div class="card">
+      <div class="timeline">
+        <div class="ver">
+          <b>v1.0</b><span>当前版本</span>
+          <p>首个正式版本：八大功能模块全部上线 · 私有化一机一码授权 · 智能选股器（自然语言选股 + 条件胜率 + 增量推送）· 量化实验室（回测/组合/滚动窗口/样本内外检验/归因）· AI 自我进化（样本外门控）· 因子 IC 分析。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>AlphaDesk · 量化研究终端</p>
+    <p>微信：<span class="wx">________</span></p>
+    <p class="muted">本产品提供的评分、选股与 AI 结论仅供学习研究，不构成投资建议。市场有风险，投资需谨慎。</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox"><img src="" alt="截图" /></div>
+<script src="app.js"></script>
+</body>
+</html>
