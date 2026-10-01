@@ -92,7 +92,7 @@
 <section id="features">
   <div class="wrap">
     <h2 class="sec-title">核心功能</h2>
-    <div class="sec-sub">八大模块，覆盖从选股到验证的完整研究链路。</div>
+    <div class="sec-sub">九大模块，覆盖从选股到验证再到持仓的全链路。</div>
 
     <div class="card feat">
       <h3>📊 仪表盘 <span class="tag">日常总览</span></h3>
@@ -144,6 +144,14 @@
         </ul>
       </div>
       <div class="card feat">
+        <h3>💼 模拟持仓 <span class="tag">v1.0.1</span></h3>
+        <ul>
+          <li>手动记录买入价/数量，每日盯盈亏</li>
+          <li>现价/市值/盈亏率自动计算</li>
+          <li>模拟盘，不连券商，只做跟踪</li>
+        </ul>
+      </div>
+      <div class="card feat">
         <h3>🔥 重点信息</h3>
         <ul>
           <li>公告智能分类：减持/立案/ST/分红/业绩</li>
@@ -187,15 +195,17 @@
     <div class="steps">
       <div class="step">
         <b>下载并解压</b>
-        <p>拿到 <code>AlphaDesk</code> 文件夹（含启动器和主程序），解压到任意目录（路径可以有中文）。</p>
+        <p>从 <a href="https://github.com/dennicLiu/alphadesk-app/releases/latest">Releases</a>
+        下载 <code>AlphaDesk-*-mac.zip</code>，解压得到 <code>AlphaDesk.app</code>。</p>
+      </div>
+      <div class="step">
+        <b>首次打开</b>
+        <p>终端执行 <code>xattr -cr /Applications/AlphaDesk.app</code> 去隔离标记，
+        然后右键点击 App → 打开（只需一次，详见安装包仓库 README）。</p>
       </div>
       <div class="step">
         <b>双击启动</b>
-        <p>Windows 双击 <code>start.bat</code>，Mac 双击 <code>start.command</code>。出现黑窗口即启动成功。</p>
-      </div>
-      <div class="step">
-        <b>浏览器打开</b>
-        <p>访问 <code>http://127.0.0.1:8200</code>。建议拖到浏览器书签栏，下次一键进入。</p>
+        <p>图标进 Dock，约 3 秒后浏览器自动打开 <code>http://127.0.0.1:8200</code>，即装即用。</p>
       </div>
       <div class="step">
         <b>开始研究</b>
