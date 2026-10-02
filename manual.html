@@ -29,6 +29,8 @@
     <li><a href="#backtest">第三步：回测验证（最重要的 10 分钟）</a></li>
     <li><a href="#hold">第四步：模拟持仓盯盈亏</a></li>
     <li><a href="#daily">日常用法：每天 10 分钟</a></li>
+    <li><a href="#aluo">阿罗：说人话，让软件干活 🆕</a></li>
+    <li><a href="#wall">K线大屏：自选股一屏看完 🆕</a></li>
     <li><a href="#money">资金面怎么看</a></li>
     <li><a href="#evolve">进阶：AI 自我进化</a></li>
     <li><a href="#transfer">换电脑 / 重新激活</a></li>
@@ -124,8 +126,38 @@
   </ol></div>
 </section>
 
+<section id="aluo">
+  <h2 class="sec-title">八、阿罗：说人话，让软件干活 <span class="tag">v1.0.3</span></h2>
+  <div class="card">
+  <p>右下角 <b>🅰️ 悬浮钮</b>点开就是阿罗（Alpha 音译），软件的操作助手。
+  和"AI 分析"（给结论）不同，阿罗是<b>动手干活</b>的：加自选、查评分、切页面，一句话搞定。</p>
+  <img class="shot" src="assets/aluo-v103.png" alt="阿罗对话" />
+  <ol>
+    <li><b>直接说股票名</b>："把茅台加进自选""茅台现在什么价""宁德评分怎么样""贵州茅台资金面"。</li>
+    <li><b>复杂问题一次问</b>："茅台和宁德哪个评分高"——阿罗会分别查、对比、给结论。</li>
+    <li><b>删自选/补跑要确认</b>：不可逆的动作会先弹确认卡，点了"执行"才干，防止说错话酿祸。</li>
+    <li><b>收盘后主动找你</b>：跑完流水线右下角出小红点，"今晚几条新消息、命中几只"。</li>
+    <li><b>没配 Key 也能用</b>：8 类固定说法（加/删自选、查价、评分、资金面、切页面、补跑等）零成本秒回；
+    去「设置」配个 DeepSeek Key 后，人话全听懂（多轮决策：查→看结果→再查→回复）。</li>
+  </ol>
+  <p class="muted">提醒：阿罗不给买卖建议，只给事实和风险提醒；大模型偶尔犯错，
+  删自选这类动作执行前请看一眼确认卡。试用到期后阿罗只能查不能改，激活即恢复。</p>
+  </div>
+</section>
+
+<section id="wall">
+  <h2 class="sec-title">九、K线大屏：自选股一屏看完 <span class="tag">v1.0.3</span></h2>
+  <div class="card"><ol>
+    <li>左侧导航 <b>📺 K线大屏</b>：自选股近 90 日 K 线一屏排开，红涨绿跌。</li>
+    <li>右上角开关：<b>均线 / BOLL / 成交量 / MACD</b>，想看哪个点哪个，可多开。</li>
+    <li>点任意卡片直达个股详情（评分+资金面+AI 全套）。</li>
+  </ol>
+  <p class="muted">适合每天收盘后花 2 分钟扫一遍：形态走坏的，一眼就能挑出来。</p>
+  </div>
+</section>
+
 <section id="money">
-  <h2 class="sec-title">八、资金面怎么看</h2>
+  <h2 class="sec-title">十、资金面怎么看</h2>
   <div class="card"><ol>
     <li>在「仪表盘」点任意股票 → 详情抽屉 → <b>💰 资金面</b>卡片。</li>
     <li>先看<b>资金评分</b>（0-100，50 中性）与结论：吸筹 / 温和流入 / 分歧 / 转弱 / 派发。</li>
@@ -140,7 +172,7 @@
 </section>
 
 <section id="evolve">
-  <h2 class="sec-title">九、进阶：AI 自我进化</h2>
+  <h2 class="sec-title">十一、进阶：AI 自我进化</h2>
   <div class="card"><ol>
     <li>「量化实验室」→「自选进化」页签，设方向（比如做多+持有 5 天），点"开始进化"。</li>
     <li>AI 自动生成几百个候选策略，逐个回测，样本外不合格的淘汰。</li>
@@ -151,7 +183,7 @@
 </section>
 
 <section id="transfer">
-  <h2 class="sec-title">十、换电脑 / 重新激活</h2>
+  <h2 class="sec-title">十二、换电脑 / 重新激活</h2>
   <div class="card"><ol>
     <li><b>重装软件（同一台）</b>：放心重装，授权、自选、持仓都在（数据在软件外面），打开即用。</li>
     <li><b>数据搬家</b>：Mac 拷 <code>~/Library/Application Support/AlphaDesk</code>；Windows 拷解压目录下的 <code>AlphaDesk\data</code>。</li>
@@ -160,7 +192,7 @@
 </section>
 
 <section id="trouble">
-  <h2 class="sec-title">十一、故障排查</h2>
+  <h2 class="sec-title">十三、故障排查</h2>
   <div class="card">
     <div class="qa"><div class="q">页面打不开 / 黑窗口一闪就没？</div>
       <div class="a">只开一个程序；换 Chrome/Edge 打开 <code>http://127.0.0.1:8200</code>；Windows 检查路径有无中文。</div></div>

@@ -118,3 +118,4 @@ footer .wx{color:var(--gold);font-size:16px;font-weight:700;}
 .timeline .ver b{font-size:15px;}
 .timeline .ver span{color:var(--ink-3);font-size:12.5px;margin-left:8px;}
 .timeline .ver p{margin:4px 0 0;color:var(--ink-2);font-size:14px;}
+.card.feat.hl{border-color:var(--gold);box-shadow:0 0 24px rgba(212,175,55,.12)}
