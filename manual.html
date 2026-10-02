@@ -29,6 +29,7 @@
     <li><a href="#backtest">第三步：回测验证（最重要的 10 分钟）</a></li>
     <li><a href="#hold">第四步：模拟持仓盯盈亏</a></li>
     <li><a href="#daily">日常用法：每天 10 分钟</a></li>
+    <li><a href="#money">资金面怎么看</a></li>
     <li><a href="#evolve">进阶：AI 自我进化</a></li>
     <li><a href="#transfer">换电脑 / 重新激活</a></li>
     <li><a href="#trouble">故障排查</a></li>
@@ -122,8 +123,23 @@
   </ol></div>
 </section>
 
+<section id="money">
+  <h2 class="sec-title">八、资金面怎么看</h2>
+  <div class="card"><ol>
+    <li>在「仪表盘」点任意股票 → 详情抽屉 → <b>💰 资金面</b>卡片。</li>
+    <li>先看<b>资金评分</b>（0-100，50 中性）与结论：吸筹 / 温和流入 / 分歧 / 转弱 / 派发。</li>
+    <li>再看<b>5/10/20 日主力净额</b>：三个都红＝资金持续进；出现一绿要注意分歧。</li>
+    <li><b>连续净流入天数</b>：连续 3 天以上比单日大额更可信（单日可能是对倒）。</li>
+    <li><b>筹码结构</b>：大资金买+散户卖＝集中（偏强）；大资金卖+散户接＝分散（偏弱）。</li>
+    <li>柱子图：红=当日净流入，绿=净流出，看出资金节奏比看数字快。</li>
+  </ol>
+  <p class="muted">重要：公开资金流是按单笔金额大小分类的推算值，不等于真实主力意图，
+  只能当"佐证"不能当"信号"。请和技术面/基本面一起看。</p>
+  <img class="shot" src="assets/moneyflow-v102.png" alt="资金面分析" /></div>
+</section>
+
 <section id="evolve">
-  <h2 class="sec-title">八、进阶：AI 自我进化</h2>
+  <h2 class="sec-title">九、进阶：AI 自我进化</h2>
   <div class="card"><ol>
     <li>「量化实验室」→「自选进化」页签，设方向（比如做多+持有 5 天），点"开始进化"。</li>
     <li>AI 自动生成几百个候选策略，逐个回测，样本外不合格的淘汰。</li>
@@ -134,7 +150,7 @@
 </section>
 
 <section id="transfer">
-  <h2 class="sec-title">九、换电脑 / 重新激活</h2>
+  <h2 class="sec-title">十、换电脑 / 重新激活</h2>
   <div class="card"><ol>
     <li><b>重装软件（同一台）</b>：放心重装，授权、自选、持仓都在（数据在软件外面），打开即用。</li>
     <li><b>数据搬家</b>：Mac 拷 <code>~/Library/Application Support/AlphaDesk</code>；Windows 拷解压目录下的 <code>AlphaDesk\data</code>。</li>
@@ -143,7 +159,7 @@
 </section>
 
 <section id="trouble">
-  <h2 class="sec-title">十、故障排查</h2>
+  <h2 class="sec-title">十一、故障排查</h2>
   <div class="card">
     <div class="qa"><div class="q">页面打不开 / 黑窗口一闪就没？</div>
       <div class="a">只开一个程序；换 Chrome/Edge 打开 <code>http://127.0.0.1:8200</code>；Windows 检查路径有无中文。</div></div>
@@ -153,6 +169,8 @@
       <div class="a">正常：首次全市场几十分钟（后台跑，进度条可见）。跑完一次进缓存，改阈值重筛秒回。自选池本来就快。</div></div>
     <div class="qa"><div class="q">行情数字不动 / 显示横线？</div>
       <div class="a">非交易时间无实时行情，显示上个交易日收盘。节假日、晚上都这样。</div></div>
+    <div class="qa"><div class="q">资金面显示不出来？</div>
+      <div class="a">资金流接口偶发抽风，会自动隐藏该卡片（不影响其他功能），稍后刷新即可。</div></div>
     <div class="qa"><div class="q">AI 功能没反应？</div>
       <div class="a">「设置」里填你自己的接口密钥。不填也不影响选股、回测、持仓全部核心功能。</div></div>
     <div class="qa"><div class="q">试用到期锁了？</div>
