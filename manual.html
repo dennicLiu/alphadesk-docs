@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AlphaDesk · 操作手册</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="hero" style="padding:36px 0">
+  <div class="wrap">
+    <h1>AlphaDesk <b>操作手册</b></h1>
+    <div class="sub">从安装到赚钱的思路养成（不是）——从安装到会用，30 分钟。</div>
+    <div class="cta">
+      <a class="btn ghost" href="index.html">← 回产品主页</a>
+      <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/latest">⬇ 下载安装包</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<section id="toc">
+  <h2 class="sec-title">目录</h2>
+  <div class="card"><ol>
+    <li><a href="#install">安装与启动（Mac / Windows）</a></li>
+    <li><a href="#trial">试用与激活</a></li>
+    <li><a href="#pool">第一步：建自选池</a></li>
+    <li><a href="#screen">第二步：一句话选股</a></li>
+    <li><a href="#backtest">第三步：回测验证（最重要的 10 分钟）</a></li>
+    <li><a href="#hold">第四步：模拟持仓盯盈亏</a></li>
+    <li><a href="#daily">日常用法：每天 10 分钟</a></li>
+    <li><a href="#evolve">进阶：AI 自我进化</a></li>
+    <li><a href="#transfer">换电脑 / 重新激活</a></li>
+    <li><a href="#trouble">故障排查</a></li>
+  </ol></div>
+</section>
+
+<section id="install">
+  <h2 class="sec-title">一、安装与启动</h2>
+  <div class="card">
+    <h3>Mac（稳定版）</h3>
+    <ol>
+      <li>从 <a href="https://github.com/dennicLiu/alphadesk-app/releases/latest">Releases</a> 下载 <code>AlphaDesk-*-mac.zip</code>，解压得 <code>AlphaDesk.app</code>，拖进"应用程序"。</li>
+      <li>打开"终端"，粘贴回车：<code>xattr -cr /Applications/AlphaDesk.app</code>（App 在哪就写哪）。</li>
+      <li><b>右键点击 App → 打开</b>，确认一次。以后双击即用。</li>
+      <li>图标进 Dock，约 3 秒后浏览器自动打开 <code>http://127.0.0.1:8200</code>。</li>
+    </ol>
+    <h3>Windows（公测版）</h3>
+    <ol>
+      <li>下载 <code>AlphaDesk-*-win-beta.zip</code>，<b>解压到桌面</b>（路径不要有中文）。</li>
+      <li>双击 <code>start.bat</code>。黑窗口一闪即后台运行，属正常。</li>
+      <li>浏览器自动打开 <code>http://127.0.0.1:8200</code>；没打开就手动输。</li>
+      <li>SmartScreen 拦截点"更多信息 → 仍要运行"；杀毒误删就加白名单后重解压。</li>
+    </ol>
+  </div>
+</section>
+
+<section id="trial">
+  <h2 class="sec-title">二、试用与激活</h2>
+  <div class="card"><ol>
+    <li>首次打开自动进入 <b>7 天全功能试用</b>，和付费版一模一样，不用先给钱。</li>
+    <li>到期后页面顶部出现 12 位【机器码】，把它发给卖家。</li>
+    <li>卖家回一串【激活码】，粘贴进输入框点"激活"，即解锁（一机一码）。</li>
+    <li>价格：月卡 ¥29.9 / 年卡 ¥299（可换机+免费升级+选股模板）。卖家微信：<code>964468802</code>（备注 AlphaDesk）。</li>
+  </ol></div>
+</section>
+
+<section id="pool">
+  <h2 class="sec-title">三、第一步：建自选池</h2>
+  <div class="card"><ol>
+    <li>首页弹窗点"一键导入示例"，10 只各行业龙头先填满（已有股票不会被覆盖）。</li>
+    <li>右上角"新增"手动加你关心的票，支持分组（默认/自建分组）。</li>
+    <li>点击任意一行看个股详情：评分、信号、AI 摘要、新闻公告。</li>
+  </ol>
+  <p class="muted">建议：先 10~30 只。池子是后面所有功能（选股范围、收盘扫描、持仓）的地基。</p></div>
+</section>
+
+<section id="screen">
+  <h2 class="sec-title">四、第二步：一句话选股</h2>
+  <div class="card"><ol>
+    <li>左侧进「智能选股器」，输入框写人话，例如：<code>连续下跌后出现止跌信号的股票</code>。</li>
+    <li>范围选"仅自选池"（快，几十秒）或"A股全市场"（慢，几十分钟，后台跑）。</li>
+    <li>点"筛选"，进度条走完看命中列表。点"试试"旁边的例句可直接体验。</li>
+    <li>结果可"存为方案"（以后收盘自动跑+命中推送）、"一键回测"、"复制代码"（去券商 App 下单）。</li>
+  </ol>
+  <p class="muted">写法技巧：用"或"表示任一满足；回放日期可填过去某天，验证"当时能不能选出来"。</p></div>
+</section>
+
+<section id="backtest">
+  <h2 class="sec-title">五、第三步：回测验证（最重要的 10 分钟）</h2>
+  <div class="card"><ol>
+    <li>「量化实验室」→ 输条件（因子下拉框组合，或从选股器"一键回测"过来）。</li>
+    <li>先看两个数：<b>条件胜率</b>（过去 6 个月这个信号胜率，50% 以下直接扔）、<b>样本外结论</b>。</li>
+    <li>再看回测 KPI：年化、最大回撤（能不能接受先看这个）、夏普、胜率/盈亏比。</li>
+    <li>样本外"由正转负，不可用" = 策略已失效，信它，别信样本内的漂亮曲线。</li>
+    <li>满意点"🏆 生成战绩图"，出一张带水印长图（自己留档，别当收益承诺发）。</li>
+  </ol>
+  <p class="muted">一句话：凡是经不起回测的感觉，都是错觉。红了就扔，不心疼。</p></div>
+</section>
+
+<section id="hold">
+  <h2 class="sec-title">六、第四步：模拟持仓盯盈亏</h2>
+  <div class="card"><ol>
+    <li>左侧「模拟持仓」→ 右上角"加持仓"，填代码、买入价、数量、买入日。</li>
+    <li>现价/市值/盈亏/盈亏率自动算，总成本/总市值/总盈亏一屏看完。</li>
+    <li>卖了就点删除。这只是个明白账，不连券商。</li>
+  </ol></div>
+</section>
+
+<section id="daily">
+  <h2 class="sec-title">七、日常用法：每天 10 分钟</h2>
+  <div class="card"><ol>
+    <li><b>早上</b>：电脑开着就行，不用管（软件只在收盘后干活）。</li>
+    <li><b>晚上</b>：打开看「仪表盘」→ 重点信息（有没有新增命中/公告异动）→ 持仓盈亏。</li>
+    <li><b>电脑关机错过收盘</b>：第二天顶部会出现琥珀色横幅"昨日收盘没跑"，点"一键补跑"。</li>
+    <li><b>定时方案</b>：选股器"存为方案"后打开"收盘定时"开关，每天 15:10 后自动跑，命中只推新增。</li>
+  </ol></div>
+</section>
+
+<section id="evolve">
+  <h2 class="sec-title">八、进阶：AI 自我进化</h2>
+  <div class="card"><ol>
+    <li>「量化实验室」→「自选进化」页签，设方向（比如做多+持有 5 天），点"开始进化"。</li>
+    <li>AI 自动生成几百个候选策略，逐个回测，样本外不合格的淘汰。</li>
+    <li>去喝杯咖啡，回来在「进化历史」看冠军规则，不满意点"采用"进正式策略。</li>
+  </ol>
+  <p class="muted">这不是"AI 炒股"，是"AI 替你试错"。冠军也请先过第五步的回测三问。</p></div>
+</section>
+
+<section id="transfer">
+  <h2 class="sec-title">九、换电脑 / 重新激活</h2>
+  <div class="card"><ol>
+    <li><b>重装软件（同一台）</b>：放心重装，授权、自选、持仓都在（数据在软件外面），打开即用。</li>
+    <li><b>数据搬家</b>：Mac 拷 <code>~/Library/Application Support/AlphaDesk</code>；Windows 拷解压目录下的 <code>AlphaDesk\data</code>。</li>
+    <li><b>换电脑（年卡免费）</b>：新电脑打开软件 → 授权弹窗"换电脑了？"→"生成换机申请串"→发给卖家→粘贴新激活码。</li>
+  </ol></div>
+</section>
+
+<section id="trouble">
+  <h2 class="sec-title">十、故障排查</h2>
+  <div class="card">
+    <div class="qa"><div class="q">页面打不开 / 黑窗口一闪就没？</div>
+      <div class="a">只开一个程序；换 Chrome/Edge 打开 <code>http://127.0.0.1:8200</code>；Windows 检查路径有无中文。</div></div>
+    <div class="qa"><div class="q">Mac 提示"已损坏"？</div>
+      <div class="a">重跑 <code>xattr -cr</code>（见第一节），右键打开。软件没坏，是苹果拦截无公证应用。</div></div>
+    <div class="qa"><div class="q">全市场筛选特别慢？</div>
+      <div class="a">正常：首次全市场几十分钟（后台跑，进度条可见）。跑完一次进缓存，改阈值重筛秒回。自选池本来就快。</div></div>
+    <div class="qa"><div class="q">行情数字不动 / 显示横线？</div>
+      <div class="a">非交易时间无实时行情，显示上个交易日收盘。节假日、晚上都这样。</div></div>
+    <div class="qa"><div class="q">AI 功能没反应？</div>
+      <div class="a">「设置」里填你自己的接口密钥。不填也不影响选股、回测、持仓全部核心功能。</div></div>
+    <div class="qa"><div class="q">试用到期锁了？</div>
+      <div class="a">联系卖家拿激活码（微信 <code>964468802</code>）。月卡 ¥29.9 / 年卡 ¥299。</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><a href="index.html">← 回产品主页</a> · <a href="https://github.com/dennicLiu/alphadesk-app">安装包仓库</a></p>
+    <p>AlphaDesk · 量化研究终端 —— 评分、选股与 AI 结论仅供学习研究，不构成投资建议。</p>
+  </div>
+</footer>
+</div>
+</body>
+</html>
