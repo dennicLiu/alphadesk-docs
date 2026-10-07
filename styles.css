@@ -119,3 +119,23 @@ footer .wx{color:var(--gold);font-size:16px;font-weight:700;}
 .timeline .ver span{color:var(--ink-3);font-size:12.5px;margin-left:8px;}
 .timeline .ver p{margin:4px 0 0;color:var(--ink-2);font-size:14px;}
 .card.feat.hl{border-color:var(--gold);box-shadow:0 0 24px rgba(212,175,55,.12)}
+
+/* 微信购买弹窗 */
+.wxmodal{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(3px);
+  display:none;align-items:center;justify-content:center;z-index:120;padding:24px;}
+.wxmodal.open{display:flex;}
+.wxmodal-card{position:relative;width:min(400px,92vw);background:#14141c;
+  border:1px solid var(--gold-line);border-radius:14px;padding:28px 26px 24px;text-align:center;
+  box-shadow:0 24px 80px rgba(0,0,0,.6);}
+.wxmodal-x{position:absolute;top:8px;right:12px;background:none;border:none;
+  color:var(--ink-3);font-size:24px;cursor:pointer;line-height:1;padding:4px 8px;}
+.wxmodal-x:hover{color:var(--ink);}
+.wxmodal-kicker{color:var(--ink-3);font-size:12px;letter-spacing:2px;margin-bottom:6px;}
+.wxmodal-title{color:var(--gold);font-size:20px;font-weight:800;margin-bottom:10px;}
+.wxmodal-tip{color:var(--ink-2);font-size:13px;margin:0 0 14px;}
+.wxmodal-code{font-size:22px;font-weight:800;color:#fff;background:rgba(212,175,55,.1);
+  border:1px dashed var(--gold);border-radius:10px;padding:12px;cursor:pointer;
+  user-select:all;transition:background .15s;}
+.wxmodal-code:hover{background:rgba(212,175,55,.2);}
+.wxmodal-ok{color:var(--gold);font-size:12px;margin-top:10px;min-height:16px;}
+button.btn{cursor:pointer;font:inherit;}

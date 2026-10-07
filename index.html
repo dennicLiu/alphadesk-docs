@@ -338,7 +338,7 @@
           <li>1 台设备</li>
           <li>微信答疑</li>
         </ul>
-        <a class="btn ghost" href="#faq">联系购买</a>
+        <button class="btn ghost wx-buy" data-plan="月卡 ¥29.9/月">联系购买</button>
       </div>
       <div class="card price hot">
         <div class="p-name">年卡 <span class="tag">推荐</span></div>
@@ -349,7 +349,7 @@
           <li>版本升级 + 微信答疑</li>
           <li>选股方案模板</li>
         </ul>
-        <a class="btn" href="#faq">立即购买</a>
+        <button class="btn wx-buy" data-plan="年卡 ¥299/年">立即购买</button>
       </div>
     </div>
     <div class="card" style="text-align:center">
@@ -445,6 +445,16 @@
 </footer>
 
 <div class="lightbox" id="lightbox"><img src="" alt="截图" /></div>
+<div class="wxmodal" id="wxmodal" role="dialog" aria-modal="true" aria-label="联系微信">
+  <div class="wxmodal-card">
+    <button class="wxmodal-x" id="wxmodalX" aria-label="关闭">×</button>
+    <div class="wxmodal-kicker">AlphaDesk · 购买咨询</div>
+    <div class="wxmodal-title" id="wxmodalPlan">年卡 ¥299/年</div>
+    <p class="wxmodal-tip">加微信，发"<b>要买 AlphaDesk</b>"，备注你的机器码更快开通：</p>
+    <div class="wxmodal-code" id="wxmodalNum" title="点一下复制">微信：964468802</div>
+    <div class="wxmodal-ok" id="wxmodalOk">点微信号可一键复制</div>
+  </div>
+</div>
 <script src="app.js"></script>
 </body>
 </html>
