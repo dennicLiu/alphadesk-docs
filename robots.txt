@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dennicliu.github.io/alphadesk-docs/sitemap.xml
