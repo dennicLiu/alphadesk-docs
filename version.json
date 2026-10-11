@@ -1,0 +1,8 @@
+{
+  "latest": "1.0.8",
+  "notes": "市场情绪 + 指数跟踪；自选总览去掉AI摘要列；新闻资讯自动加载事件日历；修复腾讯备用行情涨跌幅错位。",
+  "assets": {
+    "mac": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.8-mac.zip",
+    "win": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.8-win.zip"
+  }
+}
