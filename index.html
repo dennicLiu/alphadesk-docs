@@ -44,7 +44,7 @@
       <a class="btn ghost" href="#price">查看价格</a>
     </div>
     <div class="dl-links">
-      Mac <a href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.7-mac.zip">v1.0.7 正式版</a>
+      Mac <a href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.8-mac.zip">v1.0.8 正式版</a>
       · Windows <a href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.7-win.zip">v1.0.7 正式版</a>
       · 阿罗智能体 + K线大屏 + 激活文件导入
     </div>
@@ -108,7 +108,7 @@
 
     <div class="card feat">
       <h3>📊 仪表盘 <span class="tag">日常总览</span></h3>
-      <p class="muted" style="margin:0">自选池一屏总览：实时价格、涨跌幅、算法评分、信号、共舞度、AI 摘要，外加涨跌分布与最新重点信息（公告/新闻/异动）。</p>
+      <p class="muted" style="margin:0">自选池一屏总览：实时价格、涨跌幅、算法评分、信号、共振度，外加<b>市场情绪卡</b>（全 A 涨跌家数/涨停/情绪分）、涨跌分布与最新重点信息（公告/新闻/异动）。</p>
     </div>
 
     <div class="grid2">
@@ -187,6 +187,21 @@
           <li>行业/概念动量热力，近 5/20 日涨幅</li>
           <li>主力净流入 + 20 日均线上下分布</li>
           <li>点击板块看成分股</li>
+        </ul>
+      </div>
+      <div class="card feat hl">
+        <h3>🌡 市场情绪 <span class="tag">v1.0.8</span></h3>
+        <ul>
+          <li>全 A 5000+ 只实时扫描：上涨/下跌家数、涨停/跌停数、中位数涨幅</li>
+          <li>0-100 情绪分 + 一句话操作倾向（亢奋/积极/分化/低迷/恐慌）</li>
+          <li>东财挂了自动切新浪源，行情不断档</li>
+        </ul>
+      </div>
+      <div class="card feat hl">
+        <h3>🌍 指数跟踪 <span class="tag">v1.0.8</span></h3>
+        <ul>
+          <li>上证/深证/创业板/科创50/恒生/恒生科技 + 道琼斯/纳斯达克/标普500</li>
+          <li>打开即绘分时走势 + 昨收虚线，30 秒自动刷新</li>
         </ul>
       </div>
       <div class="card feat hl">
@@ -300,20 +315,20 @@
     <h2 class="sec-title">下载</h2>
     <div class="sec-sub">7 天全功能试用，不用先付钱。到期觉得没用，删了就行。</div>
     <div class="dl-badges">
-      <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/v1.0.1/AlphaDesk-1.0.7-mac.zip?label=Mac%E4%B8%8B%E8%BD%BD" alt="Mac下载" />
+      <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/v1.0.1/AlphaDesk-1.0.8-mac.zip?label=Mac%E4%B8%8B%E8%BD%BD" alt="Mac下载" />
       <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/v1.0.1/AlphaDesk-1.0.7-win.zip?label=Win%E4%B8%8B%E8%BD%BD" alt="Win下载" />
       <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/total?label=%E7%B4%AF%E8%AE%A1%E4%B8%8B%E8%BD%BD" alt="累计下载" />
     </div>
     <div class="price-grid">
       <div class="card price">
         <div class="p-name">🍎 Mac 版 <span class="tag">正式</span></div>
-        <div class="p-num">v1.0.7</div>
+        <div class="p-num">v1.0.8</div>
         <ul>
           <li>macOS 11+，Intel / Apple 芯片</li>
           <li>双击即用，约 3 秒进软件</li>
           <li>首次打开需 xattr 去隔离（仓库有写）</li>
         </ul>
-        <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.7-mac.zip">下载 Mac 版</a>
+        <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.8-mac.zip">下载 Mac 版</a>
         <div class="sec-sub" style="margin-top:8px">🅰️ 含阿罗智能体、K线大屏、激活文件导入</div>
       </div>
       <div class="card price">
@@ -323,6 +338,7 @@
           <li>Win10/11 64 位，解压到桌面</li>
           <li>双击 start.bat 启动</li>
           <li>SmartScreen 选"仍要运行"</li>
+          <li class="muted">v1.0.8 Win 包稍后补上，功能暂差情绪/指数两页</li>
         </ul>
         <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.7-win.zip">下载 Windows 版</a>
         <div class="sec-sub" style="margin-top:8px">🅰️ 功能与 Mac 版一致（阿罗智能体 + K线大屏 + 激活文件导入）</div>
@@ -432,7 +448,11 @@
     <div class="card">
       <div class="timeline">
         <div class="ver">
-          <b>v1.0.7</b><span>最新</span>
+          <b>v1.0.8</b><span>最新</span>
+          <p><b>市场情绪 + 指数跟踪。</b>仪表盘新增全市场情绪卡（涨跌家数/涨停/情绪分，东财新浪双源）；新增指数跟踪页，全球 9 大指数分时实时绘制；自选总览去掉 AI 摘要列（详情里看）；新闻资讯页自动加载事件日历；修复腾讯备用行情涨跌幅字段错位。</p>
+        </div>
+        <div class="ver">
+          <b>v1.0.7</b>
           <p><b>邀请有礼 + 策略分享。</b>邀请好友购买双方各多得 30 天（推荐码即机器码，可累积）；量化实验室策略一键分享，朋友粘贴即导入；回测范围可选自选池或 A 股全市场；交易明细加股票列；修复权益曲线偶发显示为竖线的问题。</p>
         </div>
         <div class="ver">
