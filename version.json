@@ -1,8 +1,8 @@
 {
-  "latest": "1.0.9",
-  "notes": "一键更新+进化迭代+新手引导；筛选卡住自动释放；详见版本更新说明。",
+  "latest": "1.0.10",
+  "notes": "通达信公式AI转译+AI多服务商；详见版本更新说明。",
   "assets": {
-    "mac": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.9-mac.zip",
-    "win": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.9-win.zip"
+    "mac": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.10-mac.zip",
+    "win": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.10-win.zip"
   }
 }
