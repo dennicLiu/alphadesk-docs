@@ -139,3 +139,9 @@ footer .wx{color:var(--gold);font-size:16px;font-weight:700;}
 .wxmodal-code:hover{background:rgba(212,175,55,.2);}
 .wxmodal-ok{color:var(--gold);font-size:12px;margin-top:10px;min-height:16px;}
 button.btn{cursor:pointer;font:inherit;}
+
+/* 指导视频 */
+.video-wrap{max-width:760px;margin:22px auto 4px}
+.video-wrap video{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 12px 40px rgba(0,0,0,.45);background:#000}
+.video-wrap .muted{margin-top:8px;font-size:13px;color:var(--muted,#8b93a7);text-align:center}
