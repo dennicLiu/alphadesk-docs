@@ -33,6 +33,9 @@
     <li><a href="#wall">K线大屏：自选股一屏看完 🆕</a></li>
     <li><a href="#money">资金面怎么看</a></li>
     <li><a href="#evolve">进阶：AI 自我进化</a></li>
+    <li><a href="#tdx">通达信公式拿来就测 🆕</a></li>
+    <li><a href="#update">一键更新：设置页里升级 🆕</a></li>
+    <li><a href="#aikey">AI 配哪家都行 🆕</a></li>
     <li><a href="#transfer">换电脑 / 重新激活</a></li>
     <li><a href="#trouble">故障排查</a></li>
   </ol></div>
@@ -63,15 +66,10 @@
   <div class="card"><ol>
     <li>首次打开自动进入 <b>7 天全功能试用</b>，和付费版一模一样，不用先给钱。</li>
     <li>到期后页面顶部出现 12 位【机器码】，把它发给卖家。</li>
-    <li>卖家回你【激活文件】或【激活码】，按下面任一方式激活即可（一机一码）。</li>
+    <li>卖家回一串【激活码】，粘贴进输入框点"激活"，即解锁（一机一码）。</li>
     <li>价格：月卡 ¥29.9 / 年卡 ¥299（可换机+免费升级+选股模板）。卖家微信：<code>964468802</code>（备注 AlphaDesk）。</li>
-  <li><b>激活方式一（推荐）：导入激活文件</b>——卖家会发你一个
-  <code>AlphaDesk-你的机器码.lic</code> 文件，打开软件点「输入激活码」，把文件<b>拖进虚线框</b>
-  （或点一下选中），自动激活完成，不用手动粘贴。</li>
-  <li><b>激活方式二：粘贴激活码</b>——如果卖家只发来一段文字（约 100 字符），
-  复制后粘进下面的输入框，点「激活」。</li>
   </ol>
-  <img class="shot" src="assets/license-v105.png" alt="激活：导入激活文件" /></div>
+  <img class="shot" src="assets/license-v101.png" alt="激活与换机" /></div>
 </section>
 
 <section id="pool">
@@ -187,8 +185,40 @@
     <img class="shot" src="assets/evolve-v101.png" alt="AI自我进化" /></div>
 </section>
 
+<section id="tdx">
+  <h2 class="sec-title">十二、通达信公式拿来就测 <span class="tag">v1.0.10</span></h2>
+  <div class="card"><ol>
+    <li>「量化实验室」→「通达信导入」页签，两种进法：<b>直接粘贴</b>公式文本，或点"从文件导入"选 .txt/.tni/.tn6 等文本文件（GBK 老文件自动识别）。</li>
+    <li>二进制 .tni 导不进？去通达信公式管理器里"导出"为文本再传，页面报错会告诉你。</li>
+    <li>点"AI 转译"：AI 把公式转成买入条件，逐条中文列出来（比如"RSI6 ≤ 20"），旁边标置信度；有"未映射"说明公式里有不支持的写法，不用管也能测。</li>
+    <li>点"用这个策略回测"：自动填到策略页，点运行，样本外那栏绿了才算过关。</li>
+  </ol>
+  <p class="warn">红牌：公式里有 ZIG/PEAK/BACKSET 这类未来函数，页面直接红牌"回测结果不可信"。这类函数用了未来数据，信号会漂移，删掉再测。</p>
+  <p class="muted">黄牌：DYNAINFO（盘中数据）、FINANCE（财务数据）日线回测不支持，转译时已忽略；跨周期引用按日线理解，结果仅供参考。转译≈还原：计算细节有差异，结果接近但不会逐 tick 一致。转译要 AI Key（下一节讲怎么配）。</p></div>
+</section>
+
+<section id="update">
+  <h2 class="sec-title">十三、一键更新：设置页里升级</h2>
+  <div class="card"><ol>
+    <li>「设置」顶部就是"软件更新"卡片，当前版本号写在上面。点"检查更新"：有新版显示版本号+更新内容。</li>
+    <li>点"一键更新"：自动下载→自动备份 data（自选/回测/激活全在里面）→覆盖文件，进度条走完点"立即重启"。</li>
+    <li>Mac .app 版没有一键更新（苹果签名机制不允许热覆盖），请手动下载覆盖，数据在包外面，丢不了。</li>
+  </ol>
+  <p class="muted">更新失败？data.bak-时间戳备份就在软件目录下，复制回来改名 data 即恢复；搞不定联系卖家。</p></div>
+</section>
+
+<section id="aikey">
+  <h2 class="sec-title">十四、AI 配哪家都行 <span class="tag">v1.0.10</span></h2>
+  <div class="card"><ol>
+    <li>「设置」→「AI 分析」页签：先选服务商。DeepSeek（默认，platform.deepseek.com 注册，1 块钱用很久）；通义千问（阿里云百炼，模型 qwen-plus）；Kimi（platform.moonshot.cn）；智谱 GLM（open.bigmodel.cn，glm-4-flash 免费）；自定义（自建 OpenAI 兼容接口，手填地址+模型）。</li>
+    <li>切服务商地址和模型自动填；Key 粘进"API Key"框，点"测试 AI 连接"，通了再把"启用 AI 分析"开关打开，最后点"保存全部设置"。</li>
+    <li>没配 Key 也能用：选股、回测、持仓、资金面全部核心功能不受影响。需要 Key 的地方都有"去配置 AI"按钮，点它自动跳过来，还有气泡一步步教你。</li>
+  </ol>
+  <p class="muted">每日调用上限默认 100 次，AI 分析页"今日已调用"看得到，用超了等明天或调大上限。</p></div>
+</section>
+
 <section id="transfer">
-  <h2 class="sec-title">十二、换电脑 / 重新激活</h2>
+  <h2 class="sec-title">十五、换电脑 / 重新激活</h2>
   <div class="card"><ol>
     <li><b>重装软件（同一台）</b>：放心重装，授权、自选、持仓都在（数据在软件外面），打开即用。</li>
     <li><b>数据搬家</b>：Mac 拷 <code>~/Library/Application Support/AlphaDesk</code>；Windows 拷解压目录下的 <code>AlphaDesk\data</code>。</li>
@@ -197,7 +227,7 @@
 </section>
 
 <section id="trouble">
-  <h2 class="sec-title">十三、故障排查</h2>
+  <h2 class="sec-title">十六、故障排查</h2>
   <div class="card">
     <div class="qa"><div class="q">页面打不开 / 黑窗口一闪就没？</div>
       <div class="a">只开一个程序；换 Chrome/Edge 打开 <code>http://127.0.0.1:8200</code>；Windows 检查路径有无中文。</div></div>
@@ -211,6 +241,10 @@
       <div class="a">资金流接口偶发抽风，会自动隐藏该卡片（不影响其他功能），稍后刷新即可。</div></div>
     <div class="qa"><div class="q">AI 功能没反应？</div>
       <div class="a">「设置」里填你自己的接口密钥。不填也不影响选股、回测、持仓全部核心功能。</div></div>
+    <div class="qa"><div class="q">更新后数据没了？</div>
+      <div class="a">先看软件目录下有没有 <code>data.bak-时间戳</code>（更新自动备份的），有就复制回来改名 data。Mac .app 版数据在 <code>~/Library/Application Support/AlphaDesk</code>，覆盖安装丢不了。</div></div>
+    <div class="qa"><div class="q">设置页打开是空白？</div>
+      <div class="a">已在 v1.0.10 修复：默认选中流水线页签。还空白就强制刷新（Ctrl+Shift+R / Cmd+Shift+R）。</div></div>
     <div class="qa"><div class="q">试用到期锁了？</div>
       <div class="a">联系卖家拿激活码（微信 <code>964468802</code>）。月卡 ¥29.9 / 年卡 ¥299。</div></div>
   </div>
