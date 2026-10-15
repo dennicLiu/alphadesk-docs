@@ -3,9 +3,9 @@
   "notes": "本地日K库：全市场一次预下载，筛选10~30秒；涨跌语义预筛+并发放开。",
   "assets": {
     "mac": "https://gitcode.com/xiaoxiongmao2018/alphadesk-release/releases/download/v1.0.12/AlphaDesk-1.0.12-mac.zip",
-    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.11-mac.zip",
+    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.12-mac.zip",
     "win": "https://gitcode.com/xiaoxiongmao2018/alphadesk-release/releases/download/v1.0.12/AlphaDesk-1.0.12-win.zip",
-    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.11-win.zip"
+    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.12-win.zip"
   },
   "stats": {
     "github": 88,
