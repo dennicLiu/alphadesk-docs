@@ -6,5 +6,10 @@
     "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.11-mac.zip",
     "win": "https://gitcode.com/xiaoxiongmao2018/alphadesk-release/releases/download/v1.0.11/AlphaDesk-1.0.11-win.zip",
     "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.11-win.zip"
+  },
+  "stats": {
+    "github": 88,
+    "gitcode": 0,
+    "updated": "2026-10-16"
   }
 }
