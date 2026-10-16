@@ -1,11 +1,11 @@
 {
-  "latest": "1.0.13",
-  "notes": "本地日K库秒筛 + 修复Windows启动(就绪后再开浏览器)。",
+  "latest": "1.0.14",
+  "notes": "本地日K库秒筛 + Windows启动诊断加固。",
   "assets": {
-    "mac": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.13-mac.zip",
-    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.13-mac.zip",
-    "win": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.13-win.zip",
-    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.13-win.zip"
+    "mac": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.14-mac.zip",
+    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.14-mac.zip",
+    "win": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.14-win.zip",
+    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.14-win.zip"
   },
   "stats": {
     "github": 88,
