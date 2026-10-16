@@ -145,3 +145,13 @@ button.btn{cursor:pointer;font:inherit;}
 .video-wrap video{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.1);
   box-shadow:0 12px 40px rgba(0,0,0,.45);background:#000}
 .video-wrap .muted{margin-top:8px;font-size:13px;color:var(--muted,#8b93a7);text-align:center}
+
+/* 策略广场 */
+.showcase-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:18px;}
+.showcase-card h3{margin:0 0 8px;font-size:17px;color:var(--gold);}
+.showcase-card .muted{font-size:13.5px;line-height:1.7;margin:0 0 10px;}
+.showcase-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:8px;}
+.showcase-meta .tag{background:rgba(240,185,11,.12);border:1px solid var(--gold-line);
+  color:var(--gold);border-radius:6px;padding:1px 8px;font-size:12px;}
+.showcase-card .copy-share{margin-top:8px;padding:9px 20px;font-size:14px;}
+.copy-ok{margin-left:10px;font-size:13px;color:#3ddc84;}

@@ -416,6 +416,18 @@
   </div>
 </section>
 
+<!-- ============ 策略广场 ============ -->
+<section id="showcase">
+  <div class="wrap">
+    <h2 class="sec-title">策略广场</h2>
+    <div class="sec-sub">社区用户分享的选股策略，点「复制」拿到分享串，粘进软件的量化实验室即用。
+      <a href="share.html" style="color:var(--gold)">我也要投稿 →</a></div>
+    <div id="showcase-grid" class="showcase-grid">
+      <div class="muted" style="padding:20px">加载中…</div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section id="faq">
   <div class="wrap">
@@ -566,6 +578,50 @@
       var t = (st.github||0) + (st.gitcode||0);
       if (t > 0) { el.textContent = t; el.title = "累计下载 " + t + " 次"; }
     }).catch(function(){});
+})();
+</script>
+<script>
+/* 策略广场: 拉 strategies.json 渲染卡片, 复制分享串 */
+(function(){
+  var grid = document.getElementById("showcase-grid");
+  if (!grid) return;
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  fetch("strategies.json?t=" + Date.now()).then(function(r){ return r.json(); })
+    .then(function(d){
+      var list = (d && d.strategies) || [];
+      if (!list.length) { grid.innerHTML = "<div class='muted' style='padding:20px'>广场装修中，首批策略即将上架…</div>"; return; }
+      grid.innerHTML = list.map(function(s, i){
+        return "<div class='card showcase-card'>" +
+          "<h3>" + esc(s.name) + "</h3>" +
+          "<p class='muted'>" + esc(s.desc || "") + "</p>" +
+          "<div class='showcase-meta'><span>📏 " + (s.rules || 0) + " 条规则</span>" +
+          (s.buzz ? "<span>📊 " + esc(s.buzz) + "</span>" : "") + "</div>" +
+          "<div class='showcase-meta'><span>👤 " + esc(s.author || "佚名") + "</span>" +
+          (s.plan ? "<span class='tag'>" + esc(s.plan) + "</span>" : "") + "</div>" +
+          "<button class='btn ghost copy-share' data-i='" + i + "'>复制分享串</button>" +
+          "<span class='copy-ok' id='copy-ok-" + i + "'></span></div>";
+      }).join("");
+      grid.addEventListener("click", function(ev){
+        var btn = ev.target.closest ? ev.target.closest(".copy-share") : null;
+        if (!btn) return;
+        var s = list[+btn.getAttribute("data-i")];
+        var done = function(){
+          var tip = document.getElementById("copy-ok-" + btn.getAttribute("data-i"));
+          if (tip) tip.textContent = "已复制，去软件里粘贴导入 ✓";
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(s.share).then(done, function(){ fallback(); });
+        } else { fallback(); }
+        function fallback(){
+          var ta = document.createElement("textarea");
+          ta.value = s.share; document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); } catch(e){}
+          document.body.removeChild(ta); done();
+        }
+      });
+    })
+    .catch(function(){ grid.innerHTML = "<div class='muted' style='padding:20px'>加载失败，请刷新重试。</div>"; });
 })();
 </script>
 </body>

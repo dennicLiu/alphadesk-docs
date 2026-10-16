@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>投稿策略 - AlphaDesk 策略广场</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.share-box{max-width:720px;margin:0 auto;}
+.share-box textarea{width:100%;min-height:130px;box-sizing:border-box;background:#0e1116;
+  border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:12px;font-size:13px;
+  font-family:ui-monospace,Menlo,Consolas,monospace;}
+.share-box input[type=text]{width:100%;box-sizing:border-box;background:#0e1116;
+  border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:11px 12px;font-size:14px;}
+.share-box label{display:block;margin:16px 0 6px;font-weight:700;}
+.check-line{display:flex;align-items:center;gap:8px;margin-top:12px;min-height:24px;font-size:14px;}
+.check-line.ok{color:#3ddc84;}
+.check-line.err{color:#ff6b6b;}
+.rule-list{margin:10px 0 0;padding-left:0;list-style:none;font-size:13px;}
+.rule-list li{padding:4px 0;color:var(--muted);}
+.rule-list li b{color:var(--ink);}
+.spec-card{margin-top:14px;}
+.spec-card h3{margin:0 0 8px;}
+button[disabled]{opacity:.4;cursor:not-allowed;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">🐱 Alpha<b>Desk</b> · 策略投稿</div>
+    <nav class="nav">
+      <a href="index.html">官网首页</a>
+      <a href="index.html#showcase">策略广场</a>
+      <a href="manual.html">操作手册</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top:32px;padding-bottom:60px">
+  <div class="share-box">
+    <h2 class="sec-title">投稿你的策略</h2>
+    <div class="sec-sub">三步：软件里点「分享」复制串 → 粘到下面 → 实时校验通过后提交。卖家审核通过即上架广场。</div>
+
+    <div class="card">
+      <label for="shareInput">1. 粘贴分享串（ADS1- 开头）</label>
+      <textarea id="shareInput" placeholder="ADS1-…&#10;从软件「量化实验室 → 分享」复制，整段粘贴也行，会自动提取。"></textarea>
+      <div class="check-line" id="checkLine"><span class="muted">等待粘贴…</span></div>
+      <ul class="rule-list" id="ruleList" style="display:none"></ul>
+    </div>
+
+    <div class="card" id="metaCard" style="display:none">
+      <label for="nickInput">2. 你的昵称（展示在广场，最多 12 字）</label>
+      <input type="text" id="nickInput" maxlength="12" placeholder="例如：追涨小王" />
+      <label for="descInput">3. 一句话介绍（最多 60 字：这策略抓什么行情）</label>
+      <input type="text" id="descInput" maxlength="60" placeholder="例如：连续大跌后抓止跌反弹" />
+      <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn" id="submitBtn" disabled>提交审核</button>
+        <span class="muted" id="submitTip" style="align-self:center;font-size:13px"></span>
+      </div>
+    </div>
+
+    <div class="card" id="doneCard" style="display:none;text-align:center">
+      <p style="font-size:18px"><b>✅ 已收到，等审核上架</b></p>
+      <p class="muted">卖家每天集中审核，通过后会出现在<a href="index.html#showcase">策略广场</a>。嫌慢？加微信 <span class="wx">964468802</span> 催一下。</p>
+    </div>
+
+    <div class="card">
+      <p style="margin:0 0 8px"><b>投稿前必读</b></p>
+      <ul class="muted" style="margin:0;padding-left:18px;font-size:13px;line-height:1.9">
+        <li>只收软件生成的 <b>ADS1- 分享串</b>，手写的、别的软件的一律过不了校验。</li>
+        <li>买入规则不能为空；因子必须是软件内置的 48 个；阈值不能离谱。</li>
+        <li>广场只存"参数"，不存代码不存链接——挂马、外链在数据模型上就不可能。</li>
+        <li>同一用户 24 小时最多投 3 个；名字简介涉敏感词直接拒。</li>
+        <li>⚠️ 所有策略仅供学习研究，不构成投资建议；历史回测不代表未来收益。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="share-validate.js"></script>
+<script>
+(function(){
+  var input = document.getElementById("shareInput");
+  var line = document.getElementById("checkLine");
+  var ruleList = document.getElementById("ruleList");
+  var metaCard = document.getElementById("metaCard");
+  var submitBtn = document.getElementById("submitBtn");
+  var submitTip = document.getElementById("submitTip");
+  var doneCard = document.getElementById("doneCard");
+  var nickInput = document.getElementById("nickInput");
+  var descInput = document.getElementById("descInput");
+  var current = null, timer = null;
+
+  // 投稿接口地址（第二期接飞书/云函数时填这里；留空则只做本地校验演示）
+  var SUBMIT_URL = "";
+
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+
+  function ruleText(r){
+    if (r.rules && !r.factor) return "子组（" + (r.op === "any" ? "任一满足" : "全部满足") + "，" + r.rules.length + " 条）";
+    return "因子 " + r.factor + " " + r.op + " " + r.value + (r.op === "between" ? (" ~ " + r.value2) : "");
+  }
+
+  function setLine(ok, msg){
+    line.className = "check-line " + (ok ? "ok" : "err");
+    line.textContent = (ok ? "✅ " : "❌ ") + msg;
+  }
+
+  async function check(){
+    var v = input.value.trim();
+    if (!v) {
+      line.className = "check-line"; line.innerHTML = "<span class='muted'>等待粘贴…</span>";
+      ruleList.style.display = "none"; metaCard.style.display = "none"; current = null;
+      return;
+    }
+    setLine(false, "校验中…");
+    try {
+      var r = await AdShare.validate(v);
+      if (!r.ok) {
+        setLine(false, r.error);
+        ruleList.style.display = "none"; metaCard.style.display = "none"; current = null;
+        return;
+      }
+      current = r;
+      setLine(true, "校验通过：「" + r.name + "」，买入规则 " + r.ruleCount + " 条。");
+      ruleList.innerHTML = (r.spec.entry.rules || []).map(function (x) {
+        return "<li>📏 <b>" + esc(ruleText(x)) + "</b></li>";
+      }).join("") + (r.spec.stop_loss_pct ? "<li>🛡 止损 " + r.spec.stop_loss_pct + "%</li>" : "") +
+        (r.spec.max_hold_days ? "<li>⏳ 最长持有 " + r.spec.max_hold_days + " 天</li>" : "");
+      ruleList.style.display = "";
+      metaCard.style.display = "";
+      submitBtn.disabled = !SUBMIT_URL;
+      submitTip.textContent = SUBMIT_URL ? "" : "投稿接口接入中（第二期），现在可以先复制校验好的串发给卖家上架。";
+    } catch (e) {
+      setLine(false, (e && e.msg) || "校验异常，请重粘。");
+      metaCard.style.display = "none"; current = null;
+    }
+  }
+
+  input.addEventListener("input", function(){
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(check, 400);
+  });
+
+  submitBtn.addEventListener("click", function(){
+    if (!current || !SUBMIT_URL) return;
+    var nick = (nickInput.value || "").trim().slice(0, 12);
+    var desc = (descInput.value || "").trim().slice(0, 60);
+    if (!nick) { submitTip.textContent = "先填个昵称。"; return; }
+    submitBtn.disabled = true; submitTip.textContent = "提交中…";
+    fetch(SUBMIT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nick: nick, desc: desc, share: current.share })
+    }).then(function(r){ return r.json(); }).then(function(d){
+      if (d && d.ok) {
+        metaCard.style.display = "none"; doneCard.style.display = "";
+      } else {
+        submitTip.textContent = "提交失败：" + ((d && d.error) || "网络异常") + "，请重试。";
+        submitBtn.disabled = false;
+      }
+    }).catch(function(){
+      submitTip.textContent = "提交失败：网络异常，请重试。";
+      submitBtn.disabled = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>
