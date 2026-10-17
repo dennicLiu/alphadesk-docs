@@ -8,9 +8,9 @@
     "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.16/AlphaDesk-1.0.16-win.zip"
   },
   "stats": {
-    "github": 76,
-    "win": 47,
-    "mac": 29,
+    "github": 79,
+    "win": 49,
+    "mac": 30,
     "updated": "2026-10-17"
   }
 }
