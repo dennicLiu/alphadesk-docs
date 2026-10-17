@@ -94,14 +94,15 @@
       "posted_at": "2026-10-17"
     },
     {
-      "name": "低估值 + 放量启动",
-      "desc": "PE 处于低位且成交量突然放大，抓启动前夜。",
+      "name": "主力放量启动",
+      "desc": "主力净占比转正且成交量突然放大，抓资金进场启动。",
       "author": "官方示例",
       "rules": 2,
-      "share": "ADS1-eyJuYW1lIjogIuS9juS8sOWAvCArIOaUvumHj-WQr-WKqCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogInBlX3JhdGlvIiwgIm9wIjogImx0ZSIsICJ2YWx1ZSI6IDE1fSwgeyJmYWN0b3IiOiAidm9sdW1lX3JhdGlvXzUiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMS44fV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDIwIiwgIm9wIjogImd0ZSIsICJ2YWx1ZSI6IDE1fV19LCAiaW5pdGlhbF9jYXBpdGFsIjogMTAwMDAwLjAsICJrbGluZV9jb3VudCI6IDI2MCwgIm1heF9ob2xkX2RheXMiOiA0MCwgIm5hbWUiOiAi5L2O5Lyw5YC8ICsg5pS-6YeP5ZCv5YqoIiwgInN0b3BfbG9zc19wY3QiOiA3LCAidGFrZV9wcm9maXRfcGN0IjogbnVsbH0sICJzdW0iOiAiM2YwNzhmZDYiLCAidiI6IDF9",
+      "buzz": "",
+      "share": "ADS1-eyJuYW1lIjogIuS4u-WKm-aUvumHj-WQr-WKqCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogIm1mX21haW5fcmF0aW9fNSIsICJvcCI6ICJndGUiLCAidmFsdWUiOiAzfSwgeyJmYWN0b3IiOiAidm9sdW1lX3JhdGlvXzUiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMS44fV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDIwIiwgIm9wIjogImd0ZSIsICJ2YWx1ZSI6IDE1fV19LCAiaW5pdGlhbF9jYXBpdGFsIjogMTAwMDAwLjAsICJrbGluZV9jb3VudCI6IDI2MCwgIm1heF9ob2xkX2RheXMiOiA0MCwgIm5hbWUiOiAi5Li75Yqb5pS-6YeP5ZCv5YqoIiwgInN0b3BfbG9zc19wY3QiOiA3LCAidGFrZV9wcm9maXRfcGN0IjogbnVsbH0sICJzdW0iOiAiZjZjN2ZjYzkiLCAidiI6IDF9",
       "source": "official",
       "factors": [
-        "pe_ratio",
+        "mf_main_ratio_5",
         "ret20",
         "volume_ratio_5"
       ],

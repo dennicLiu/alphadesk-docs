@@ -131,13 +131,28 @@ def _load_seed() -> list[dict]:
         return []
 
 
+def _audit_seeds(seeds: list[dict]) -> None:
+    """种子闸门: 因子必须存在于系统, 否则用户导入必然失败 —— 直接中止同步。"""
+    bad = []
+    for s in seeds:
+        miss = [f for f in (s.get("factors") or []) if f not in FACTORS]
+        if miss:
+            bad.append((s.get("name") or "?", miss))
+    if bad:
+        for n, m in bad:
+            print(f"  种子含系统不存在的因子: {n!r} -> {m}", file=sys.stderr)
+        raise SystemExit(f"种子校验失败: {len(bad)} 条含未知因子, 中止同步")
+
+
 def main() -> int:
     tok = tenant_token()
     url = f"{API}/bitable/v1/apps/{APP_TOKEN}/tables/{TABLE_ID}/records?page_size=100"
     out = []
     seen = set()
     # 先放种子, 再叠线上(同分享串以线上为准)
-    for s in _load_seed():
+    seeds = _load_seed()
+    _audit_seeds(seeds)
+    for s in seeds:
         if s.get("share"):
             seen.add(s["share"])
             out.append(s)
