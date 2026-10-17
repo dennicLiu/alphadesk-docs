@@ -1,11 +1,11 @@
 {
-  "latest": "1.0.15",
-  "notes": "启动前环境体检 24 项：打不开/白屏时看 logs/env_check.log。",
+  "latest": "1.0.16",
+  "notes": "新增问题反馈、优化选股提示与底部操作区；Mac/Windows 安装包同步更新。",
   "assets": {
     "mac": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip",
-    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.15/AlphaDesk-1.0.15-mac.zip",
+    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.16/AlphaDesk-1.0.16-mac.zip",
     "win": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-win.zip",
-    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.15/AlphaDesk-1.0.15-win.zip"
+    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.16/AlphaDesk-1.0.16-win.zip"
   },
   "stats": {
     "github": 76,
