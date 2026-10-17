@@ -615,21 +615,37 @@
 <script>
 (function(){
   var el = document.getElementById("dlTotal");
-  fetch("version.json?t=" + Date.now()).then(function(r){ return r.json(); })
-    .then(function(d){
-      var st = d.stats || {};
-      var t = (st.github||0) + (st.gitcode||0);
-      if (el && t > 0) { el.textContent = t; el.title = "累计下载 " + t + " 次"; }
-      // 下载区三个数字与顶部同源(同一份 version.json), 保证 Mac+Win == 累计
-      function setNum(id, v) { var n = document.getElementById(id); if (n && v != null) n.textContent = v; }
-      setNum("dlMac", st.mac); setNum("dlWin", st.win); setNum("dlSum", st.github);
-      // 版本号统一由 version.json 驱动, 发版只改 json, 不用动 HTML
-      if (d.latest) {
-        document.querySelectorAll(".ver-auto").forEach(function(n){
-          n.textContent = d.latest;
+  function renderStats(d) {
+    var st = d.stats || {};
+    var t = (st.github||0) + (st.gitcode||0);
+    if (el && t > 0) { el.textContent = t; el.title = "累计下载 " + t + " 次"; }
+    function setNum(id, v) { var n = document.getElementById(id); if (n && v != null) n.textContent = v; }
+    setNum("dlMac", st.mac); setNum("dlWin", st.win); setNum("dlSum", st.github);
+  }
+  function renderVersion(d) {
+    if (d.latest) document.querySelectorAll(".ver-auto").forEach(function(n){ n.textContent = d.latest; });
+  }
+  function fetchLiveStats() {
+    return fetch("https://api.github.com/repos/dennicLiu/alphadesk-app/releases?per_page=100&_=" + Date.now(), {
+      headers: { "Accept": "application/vnd.github+json" }, cache: "no-store"
+    }).then(function(r){ if (!r.ok) throw new Error("GitHub API " + r.status); return r.json(); })
+      .then(function(releases){
+        var counts = { mac: 0, win: 0 };
+        releases.forEach(function(release){
+          (release.assets || []).forEach(function(asset){
+            var name = (asset.name || "").toLowerCase();
+            if (!/^alphadesk-.*[.]zip$/.test(name)) return;
+            if (name.indexOf("win") >= 0) counts.win += Number(asset.download_count || 0);
+            else if (name.indexOf("mac") >= 0) counts.mac += Number(asset.download_count || 0);
+          });
         });
-      }
-    }).catch(function(){});
+        renderStats({ stats: { github: counts.mac + counts.win, mac: counts.mac, win: counts.win } });
+      });
+  }
+  // 先用 version.json 展示，再用 GitHub Release 资产实时下载量覆盖，避免定时任务延迟。
+  fetch("version.json?t=" + Date.now()).then(function(r){ return r.json(); })
+    .then(function(d){ renderStats(d); renderVersion(d); return fetchLiveStats().catch(function(){}); })
+    .catch(function(){});
 })();
 </script>
 <script>
