@@ -93,12 +93,21 @@ button[disabled]{opacity:.4;cursor:not-allowed;}
   var descInput = document.getElementById("descInput");
   var current = null, timer = null;
 
-  // 投稿通道: 飞书表单。校验通过后复制分享串并跳转表单(飞书自己写库, 前端无需任何密钥)。
-  // 建好表单后把分享链接粘到下面这行即可生效。
-  var FORM_URL = "";
+  // 投稿通道: 飞书表单。校验通过后拼一个"预填好三个字段"的表单链接,
+  // 用户点提交即直达表单, 只需按一下「提交」按钮(飞书自己写库, 前端无密钥)。
+  var FORM_URL = "https://a602o24ya8.feishu.cn/share/base/form/shrcnfwXbNFJfHuRQOamw8E5efg";
 
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+
+  // 飞书表单预填: ?prefill_<字段名>=<值>(字段名 URL 编码)。实测有效。
+  function buildFormUrl(nick, desc, share){
+    var p = new URLSearchParams();
+    if (nick) p.append("prefill_昵称", nick);
+    if (desc) p.append("prefill_简介", desc);
+    if (share) p.append("prefill_分享串", share);
+    return FORM_URL + (FORM_URL.indexOf("?") < 0 ? "?" : "&") + p.toString();
+  }
 
   function ruleText(r){
     if (r.rules && !r.factor) return "子组（" + (r.op === "any" ? "任一满足" : "全部满足") + "，" + r.rules.length + " 条）";
@@ -134,7 +143,7 @@ button[disabled]{opacity:.4;cursor:not-allowed;}
       ruleList.style.display = "";
       metaCard.style.display = "";
       submitBtn.disabled = false;
-      submitTip.textContent = FORM_URL ? "点「提交审核」会把分享串复制好并打开投稿表单。" : "投稿表单接入中；现在可先复制分享串发给卖家上架。";
+      submitTip.textContent = "校验通过。填好昵称简介，点「提交审核」会打开预填好的投稿表单。";
     } catch (e) {
       setLine(false, (e && e.msg) || "校验异常，请重粘。");
       metaCard.style.display = "none"; current = null;
@@ -146,41 +155,16 @@ button[disabled]{opacity:.4;cursor:not-allowed;}
     timer = setTimeout(check, 400);
   });
 
-  function copyText(text){
-    return new Promise(function(resolve){
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(resolve, function(){ _fallback(); resolve(); });
-      } else { _fallback(); resolve(); }
-      function _fallback(){
-        var ta = document.createElement("textarea");
-        ta.value = text; document.body.appendChild(ta); ta.select();
-        try { document.execCommand("copy"); } catch (e) {}
-        document.body.removeChild(ta);
-      }
-    });
-  }
-
   submitBtn.addEventListener("click", function(){
     if (!current) return;
-    if (!FORM_URL) {
-      copyText(current.share).then(function(){
-        submitTip.textContent = "分享串已复制 ✓ 发给卖家即可上架（表单接入后这里会一键跳转）。";
-      });
-      return;
-    }
     var nick = (nickInput.value || "").trim().slice(0, 12);
     if (!nick) { submitTip.textContent = "先填个昵称。"; return; }
-    // 分享串复制好 + 打开飞书表单, 用户粘贴 + 填昵称简介提交
-    var packed = current.share + "\n" +
-      "昵称：" + nick + "\n" +
-      "简介：" + (descInput.value || "").trim().slice(0, 60);
-    copyText(packed).then(function(){
-      window.open(FORM_URL, "_blank", "noopener");
-      metaCard.style.display = "none";
-      doneCard.style.display = "";
-      document.getElementById("doneTip").textContent =
-        "已复制「分享串+昵称+简介」，在刚打开的飞书表单里粘贴并提交即可。";
-    });
+    var desc = (descInput.value || "").trim().slice(0, 60);
+    window.open(buildFormUrl(nick, desc, current.share), "_blank", "noopener");
+    metaCard.style.display = "none";
+    doneCard.style.display = "";
+    document.getElementById("doneTip").textContent =
+      "投稿表单已在新标签打开（昵称、简介、分享串都已替你填好），按一下「提交」就好。";
   });
 })();
 </script>
