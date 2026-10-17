@@ -1,0 +1,33 @@
+{
+  "strategies": [
+    {
+      "author": "官方示例",
+      "buzz": "近6月样本外胜率 52%，盈亏比 1.8",
+      "desc": "连续大跌后出现止跌信号，抓超跌反弹。",
+      "id": "ex-chaodie",
+      "name": "超跌反弹",
+      "rules": 2,
+      "share": "ADS1-eyJuYW1lIjogIui2hei3jOWPjeW8uSIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDIwIiwgIm9wIjogImx0ZSIsICJ2YWx1ZSI6IC0xNX0sIHsiZmFjdG9yIjogInN0b3BfZmFsbCIsICJvcCI6ICJndGUiLCAidmFsdWUiOiAxfV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDUiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogOH1dfSwgImluaXRpYWxfY2FwaXRhbCI6IDEwMDAwMC4wLCAia2xpbmVfY291bnQiOiAyNjAsICJtYXhfaG9sZF9kYXlzIjogMjAsICJuYW1lIjogIui2hei3jOWPjeW8uSIsICJzdG9wX2xvc3NfcGN0IjogOCwgInRha2VfcHJvZml0X3BjdCI6IG51bGx9LCAic3VtIjogImQ4NzQyNzYzIiwgInYiOiAxfQ",
+      "win_rate": 52
+    },
+    {
+      "author": "官方示例",
+      "buzz": "近6月样本外胜率 55%，最大回撤 9%",
+      "desc": "均线多头排列 + 量能配合，做趋势。",
+      "id": "ex-junxian",
+      "name": "均线多头",
+      "rules": 3,
+      "share": "ADS1-eyJuYW1lIjogIuWdh-e6v-WkmuWktCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogIm1hX2J1bGwiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMX0sIHsiZmFjdG9yIjogIm1hMjBfc2xvcGUiLCAib3AiOiAiZ3QiLCAidmFsdWUiOiAwfSwgeyJmYWN0b3IiOiAidm9sdW1lX3JhdGlvXzUiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMS4yfV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDEwIiwgIm9wIjogImx0ZSIsICJ2YWx1ZSI6IC02fV19LCAiaW5pdGlhbF9jYXBpdGFsIjogMTAwMDAwLjAsICJrbGluZV9jb3VudCI6IDI2MCwgIm1heF9ob2xkX2RheXMiOiAzMCwgIm5hbWUiOiAi5Z2H57q_5aSa5aS0IiwgInN0b3BfbG9zc19wY3QiOiA2LCAidGFrZV9wcm9maXRfcGN0IjogbnVsbH0sICJzdW0iOiAiYjExYTRhMjQiLCAidiI6IDF9"
+    },
+    {
+      "author": "官方示例",
+      "buzz": "近6月样本外胜率 48%，盈亏比 2.4",
+      "desc": "连板 + 主力资金共振，博龙头。",
+      "id": "ex-lianban",
+      "name": "连板龙头",
+      "rules": 2,
+      "share": "ADS1-eyJuYW1lIjogIui_nuadv-m-meWktCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogImxpbWl0X3VwX2RheXMiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMn0sIHsiZmFjdG9yIjogIm1mX3Njb3JlIiwgIm9wIjogImd0ZSIsICJ2YWx1ZSI6IDYwfV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDUiLCAib3AiOiAibHRlIiwgInZhbHVlIjogLTV9XX0sICJpbml0aWFsX2NhcGl0YWwiOiAxMDAwMDAuMCwgImtsaW5lX2NvdW50IjogMjYwLCAibWF4X2hvbGRfZGF5cyI6IDEwLCAibmFtZSI6ICLov57mnb_pvpnlpLQiLCAic3RvcF9sb3NzX3BjdCI6IDcsICJ0YWtlX3Byb2ZpdF9wY3QiOiBudWxsfSwgInN1bSI6ICI4OGY0NmRlOSIsICJ2IjogMX0"
+    }
+  ],
+  "updated": "2026-10-17"
+}
