@@ -24,6 +24,7 @@
     <nav class="nav">
       <a href="#intro">产品介绍</a>
       <a href="#features">核心功能</a>
+      <a href="#showcase">策略广场</a>
       <a href="#workflow">使用流程</a>
       <a href="#deploy">部署与授权</a>
       <a href="#price">购买</a>
@@ -39,9 +40,15 @@
   <div class="wrap">
     <h1>AlphaDesk <b>选股工具</b>：一句话选股，任何战法先跑胜率</h1>
     <div class="sub">多因子选股 · 一句话选股 · 无前视偏差回测 · AI 自我进化</div>
+    <div class="hero-proof">
+      <span>🧬 <b id="scHeroCount">–</b> 个社区策略可直接复制导入</span>
+      <span>📏 60+ 因子 · 📊 含样本外检验</span>
+      <span>🔒 数据全在本机，不上传</span>
+    </div>
     <div class="risk">⚠️ 本产品为量化研究工具，所有评分、选股结果与 AI 结论仅供学习研究，不构成投资建议。市场有风险，投资需谨慎。</div>
     <div class="cta">
       <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/latest">⬇ 免费下载试用</a>
+      <a class="btn ghost" href="#showcase">🧬 逛策略广场</a>
       <a class="btn ghost" href="manual.html">📖 操作手册</a>
       <a class="btn ghost" href="#price">查看价格</a>
     </div>
@@ -253,6 +260,26 @@
   </div>
 </section>
 
+<!-- ============ 策略广场 ============ -->
+<section id="showcase">
+  <div class="wrap">
+    <h2 class="sec-title">🧬 策略广场 <span class="sc-count">社区共 <b id="scCount">–</b> 个策略</span></h2>
+    <div class="sec-sub">别人已经跑通并公开参数的战法，点「复制分享串」粘进软件的<b>量化实验室</b>即可一键导入回测。
+      想要自己的策略出现在这里？<a href="share.html" class="sc-post-link">投稿 →</a></div>
+    <div id="showcase-grid" class="showcase-grid">
+      <div class="muted" style="padding:20px">加载中…</div>
+    </div>
+    <div class="sc-cta">
+      <div class="sc-cta-txt">
+        <b>没找到合适的？</b>
+        <span>软件里跑出满意结果，点「分享」生成 ADS1- 串，粘到投稿页就能上架，审核通过后出现在广场，署名展示。</span>
+      </div>
+      <a class="btn" href="share.html">✍️ 我要投稿</a>
+      <a class="btn ghost" href="https://github.com/dennicLiu/alphadesk-app/releases/latest">⬇ 先下载软件</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 使用流程 ============ -->
 <section id="workflow">
   <div class="wrap">
@@ -416,17 +443,6 @@
   </div>
 </section>
 
-<!-- ============ 策略广场 ============ -->
-<section id="showcase">
-  <div class="wrap">
-    <h2 class="sec-title">策略广场</h2>
-    <div class="sec-sub">社区用户分享的选股策略，点「复制」拿到分享串，粘进软件的量化实验室即用。
-      <a href="share.html" style="color:var(--gold)">我也要投稿 →</a></div>
-    <div id="showcase-grid" class="showcase-grid">
-      <div class="muted" style="padding:20px">加载中…</div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ FAQ ============ -->
 <section id="faq">
@@ -602,16 +618,23 @@
   fetch("strategies.json?t=" + Date.now()).then(function(r){ return r.json(); })
     .then(function(d){
       var list = (d && d.strategies) || [];
+      var cnt = document.getElementById("scCount");
+      var heroCnt = document.getElementById("scHeroCount");
+      if (cnt) cnt.textContent = list.length;
+      if (heroCnt) heroCnt.textContent = list.length;
       if (!list.length) { grid.innerHTML = "<div class='muted' style='padding:20px'>广场装修中，首批策略即将上架…</div>"; return; }
       grid.innerHTML = list.map(function(s, i){
+        var plan = s.plan
+          ? "<span class='tag'>" + esc(s.plan) + "</span>"
+          : "<span class='tag tag-gold'>官方示例</span>";
         return "<div class='card showcase-card'>" +
+          "<div class='sc-rank'>" + (i + 1) + "</div>" +
           "<h3>" + esc(s.name) + "</h3>" +
           "<p class='muted'>" + esc(s.desc || "") + "</p>" +
           "<div class='showcase-meta'><span>📏 " + (s.rules || 0) + " 条规则</span>" +
-          (s.buzz ? "<span>📊 " + esc(s.buzz) + "</span>" : "") + "</div>" +
-          "<div class='showcase-meta'><span>👤 " + esc(s.author || "佚名") + "</span>" +
-          (s.plan ? "<span class='tag'>" + esc(s.plan) + "</span>" : "") + "</div>" +
-          "<button class='btn ghost copy-share' data-i='" + i + "'>复制分享串</button>" +
+          "<span>📊 " + esc(s.buzz || "未回测（导入后可自行跑）") + "</span></div>" +
+          "<div class='showcase-meta'><span>👤 " + esc(s.author || "佚名") + "</span>" + plan + "</div>" +
+          "<button class='btn copy-share' data-i='" + i + "'>📋 复制分享串</button>" +
           "<span class='copy-ok' id='copy-ok-" + i + "'></span></div>";
       }).join("");
       grid.addEventListener("click", function(ev){

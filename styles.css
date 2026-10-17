@@ -161,3 +161,28 @@ button.btn{cursor:pointer;font:inherit;}
 .dl-chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:8px;
   background:rgba(240,185,11,.10);border:1px solid var(--gold-line);font-size:14px;color:#e8e8ee;}
 .dl-chip b{color:var(--gold);font-size:18px;font-weight:700;}
+
+/* ===== 策略广场曝光增强 ===== */
+.hero-proof{display:flex;flex-wrap:wrap;gap:10px 22px;margin:14px 0 4px;font-size:14px;color:#c9c9d4;}
+.hero-proof b{color:var(--gold);font-weight:700;}
+
+#showcase .sec-title{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+.sc-count{font-size:14px;font-weight:400;color:#9a9aa8;}
+.sc-count b{color:var(--gold);font-size:18px;}
+.sc-post-link{color:var(--gold);text-decoration:underline;margin-left:4px;}
+
+.showcase-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.showcase-card{position:relative;padding-top:22px;}
+.showcase-card h3{margin:0 0 6px;font-size:18px;}
+.sc-rank{position:absolute;top:14px;right:16px;width:24px;height:24px;border-radius:50%;
+  background:rgba(240,185,11,.14);border:1px solid var(--gold-line);color:var(--gold);
+  font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.showcase-card .copy-share{width:100%;margin-top:12px;}
+
+.tag-gold{background:rgba(240,185,11,.14);border-color:var(--gold-line);color:var(--gold);}
+
+.sc-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px;padding:18px 22px;
+  border-radius:12px;background:rgba(240,185,11,.07);border:1px solid var(--gold-line);}
+.sc-cta-txt{display:flex;flex-direction:column;gap:4px;flex:1 1 320px;}
+.sc-cta-txt b{font-size:16px;color:#fff;}
+.sc-cta-txt span{font-size:13px;color:#b9b9c6;line-height:1.6;}
