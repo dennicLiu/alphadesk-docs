@@ -62,7 +62,8 @@ button[disabled]{opacity:.4;cursor:not-allowed;}
 
     <div class="card" id="doneCard" style="display:none;text-align:center">
       <p style="font-size:18px"><b>✅ 已收到，等审核上架</b></p>
-      <p class="muted">卖家每天集中审核，通过后会出现在<a href="index.html#showcase">策略广场</a>。嫌慢？加微信 <span class="wx">964468802</span> 催一下。</p>
+      <p class="muted" id="doneTip">卖家每天集中审核，通过后会出现在<a href="index.html#showcase">策略广场</a>。</p>
+      <p class="muted">嫌慢？加微信 <span class="wx">964468802</span> 催一下。</p>
     </div>
 
     <div class="card">
@@ -92,8 +93,9 @@ button[disabled]{opacity:.4;cursor:not-allowed;}
   var descInput = document.getElementById("descInput");
   var current = null, timer = null;
 
-  // 投稿接口地址（第二期接飞书/云函数时填这里；留空则只做本地校验演示）
-  var SUBMIT_URL = "";
+  // 投稿通道: 飞书表单。校验通过后复制分享串并跳转表单(飞书自己写库, 前端无需任何密钥)。
+  // 建好表单后把分享链接粘到下面这行即可生效。
+  var FORM_URL = "";
 
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
@@ -131,8 +133,8 @@ button[disabled]{opacity:.4;cursor:not-allowed;}
         (r.spec.max_hold_days ? "<li>⏳ 最长持有 " + r.spec.max_hold_days + " 天</li>" : "");
       ruleList.style.display = "";
       metaCard.style.display = "";
-      submitBtn.disabled = !SUBMIT_URL;
-      submitTip.textContent = SUBMIT_URL ? "" : "投稿接口接入中（第二期），现在可以先复制校验好的串发给卖家上架。";
+      submitBtn.disabled = false;
+      submitTip.textContent = FORM_URL ? "点「提交审核」会把分享串复制好并打开投稿表单。" : "投稿表单接入中；现在可先复制分享串发给卖家上架。";
     } catch (e) {
       setLine(false, (e && e.msg) || "校验异常，请重粘。");
       metaCard.style.display = "none"; current = null;
@@ -144,26 +146,40 @@ button[disabled]{opacity:.4;cursor:not-allowed;}
     timer = setTimeout(check, 400);
   });
 
-  submitBtn.addEventListener("click", function(){
-    if (!current || !SUBMIT_URL) return;
-    var nick = (nickInput.value || "").trim().slice(0, 12);
-    var desc = (descInput.value || "").trim().slice(0, 60);
-    if (!nick) { submitTip.textContent = "先填个昵称。"; return; }
-    submitBtn.disabled = true; submitTip.textContent = "提交中…";
-    fetch(SUBMIT_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nick: nick, desc: desc, share: current.share })
-    }).then(function(r){ return r.json(); }).then(function(d){
-      if (d && d.ok) {
-        metaCard.style.display = "none"; doneCard.style.display = "";
-      } else {
-        submitTip.textContent = "提交失败：" + ((d && d.error) || "网络异常") + "，请重试。";
-        submitBtn.disabled = false;
+  function copyText(text){
+    return new Promise(function(resolve){
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(resolve, function(){ _fallback(); resolve(); });
+      } else { _fallback(); resolve(); }
+      function _fallback(){
+        var ta = document.createElement("textarea");
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
       }
-    }).catch(function(){
-      submitTip.textContent = "提交失败：网络异常，请重试。";
-      submitBtn.disabled = false;
+    });
+  }
+
+  submitBtn.addEventListener("click", function(){
+    if (!current) return;
+    if (!FORM_URL) {
+      copyText(current.share).then(function(){
+        submitTip.textContent = "分享串已复制 ✓ 发给卖家即可上架（表单接入后这里会一键跳转）。";
+      });
+      return;
+    }
+    var nick = (nickInput.value || "").trim().slice(0, 12);
+    if (!nick) { submitTip.textContent = "先填个昵称。"; return; }
+    // 分享串复制好 + 打开飞书表单, 用户粘贴 + 填昵称简介提交
+    var packed = current.share + "\n" +
+      "昵称：" + nick + "\n" +
+      "简介：" + (descInput.value || "").trim().slice(0, 60);
+    copyText(packed).then(function(){
+      window.open(FORM_URL, "_blank", "noopener");
+      metaCard.style.display = "none";
+      doneCard.style.display = "";
+      document.getElementById("doneTip").textContent =
+        "已复制「分享串+昵称+简介」，在刚打开的飞书表单里粘贴并提交即可。";
     });
   });
 })();
