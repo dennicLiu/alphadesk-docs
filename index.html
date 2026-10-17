@@ -266,6 +266,29 @@
     <h2 class="sec-title">🧬 策略广场 <span class="sc-count">社区共 <b id="scCount">–</b> 个策略</span></h2>
     <div class="sec-sub">别人已经跑通并公开参数的战法，点「复制分享串」粘进软件的<b>量化实验室</b>即可一键导入回测。
       想要自己的策略出现在这里？<a href="share.html" class="sc-post-link">投稿 →</a></div>
+    <div class="sc-toolbar">
+      <input id="scQ" class="sc-input" type="search" placeholder="🔍 搜策略名 / 简介 / 作者 / 因子，如 ma_bull、hammer" autocomplete="off" />
+      <select id="scRules" class="sc-sel">
+        <option value="">全部规则数</option>
+        <option value="1-2">1~2 条（轻量）</option>
+        <option value="3-4">3~4 条</option>
+        <option value="5-">5 条以上</option>
+      </select>
+      <select id="scSource" class="sc-sel">
+        <option value="">全部来源</option>
+        <option value="community">社区投稿</option>
+        <option value="official">官方示例</option>
+      </select>
+      <select id="scSort" class="sc-sel">
+        <option value="hot">社区优先 · 最新在前</option>
+        <option value="copies">复制最多</option>
+        <option value="rules">规则最少</option>
+        <option value="rules_desc">规则最多</option>
+      </select>
+      <button id="scReset" class="sc-reset">重置</button>
+    </div>
+    <div id="scFactorBar" class="sc-factors"></div>
+    <div id="scResultTip" class="sc-tip"></div>
     <div id="showcase-grid" class="showcase-grid">
       <div class="muted" style="padding:20px">加载中…</div>
     </div>
@@ -587,6 +610,7 @@
     <div class="wxmodal-ok" id="wxmodalOk">点微信号可一键复制</div>
   </div>
 </div>
+<script src="plaza-config.js"></script>
 <script src="app.js"></script>
 <script>
 (function(){
@@ -609,55 +633,198 @@
 })();
 </script>
 <script>
-/* 策略广场: 拉 strategies.json 渲染卡片, 复制分享串 */
+/* 策略广场: 排序(社区优先) + 搜索/筛选 + 复制计数 + 一键复制 */
 (function(){
   var grid = document.getElementById("showcase-grid");
   if (!grid) return;
+
+  var LIST = [];          // 原始数据
+  var VIEW = [];          // 当前筛选结果
+  var COPIES = {};        // id -> 复制次数(来自计数器, 取不到就不显示)
+  var state = { q: "", rules: "", source: "", factor: "", sort: "hot" };
+
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function key(s){ return s.id || s.share; }
+
+  /* ---- 复制计数: 可选依赖 ----
+     配置 window.PLAZA_COUNTER 后生效(Cloudflare Worker 等);
+     未配置或服务不可用时直接隐藏该数字, 绝不显示假数。 */
+  function counterBase(){ return window.PLAZA_COUNTER || ""; }
+  function loadCopies(){
+    var base = counterBase();
+    if (!base) return Promise.resolve({});
+    return fetch(base + "/all").then(function(r){ return r.ok ? r.json() : {}; })
+      .then(function(d){ return (d && d.counts) || {}; })
+      .catch(function(){ return {}; });
+  }
+  function bumpCopy(id){
+    var base = counterBase();
+    if (!base) return;
+    fetch(base + "/hit", { method: "POST", headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ id: id }) })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){ if (d && typeof d.count === "number") { COPIES[id] = d.count; render(); } })
+      .catch(function(){});
+  }
+
+  /* ---- 排序: 社区优先, 同源内按 posted_at 倒序 ---- */
+  function sortList(arr){
+    var a = arr.slice();
+    if (state.sort === "copies") {
+      a.sort(function(x, y){ return (COPIES[key(y)] || 0) - (COPIES[key(x)] || 0); });
+    } else if (state.sort === "rules") {
+      a.sort(function(x, y){ return (x.rules || 0) - (y.rules || 0); });
+    } else if (state.sort === "rules_desc") {
+      a.sort(function(x, y){ return (y.rules || 0) - (x.rules || 0); });
+    } else {
+      a.sort(function(x, y){
+        var cx = x.source === "community" ? 0 : 1, cy = y.source === "community" ? 0 : 1;
+        if (cx !== cy) return cx - cy;                       // 社区排前面
+        if (cx === 0 && x.posted_at !== y.posted_at) return x.posted_at < y.posted_at ? 1 : -1;
+        return 0;
+      });
+    }
+    return a;
+  }
+
+  function matchRules(n){
+    if (!state.rules) return true;
+    var p = state.rules.split("-");
+    var lo = parseInt(p[0], 10) || 0;
+    if (p[1]) { var hi = parseInt(p[1], 10); return n >= lo && n <= hi; }
+    return n >= lo;
+  }
+  function matchOne(s){
+    if (state.source && (s.source || "community") !== state.source) return false;
+    if (!matchRules(s.rules || 0)) return false;
+    if (state.factor && (s.factors || []).indexOf(state.factor) < 0) return false;
+    if (state.q) {
+      var q = state.q.toLowerCase();
+      var hay = [s.name, s.desc, s.author].concat(s.factors || []).join(" ").toLowerCase();
+      if (hay.indexOf(q) < 0) return false;
+    }
+    return true;
+  }
+
+  function apply(){
+    VIEW = sortList(LIST.filter(matchOne));
+    render();
+  }
+
+  function render(){
+    var cnt = document.getElementById("scCount");
+    var heroCnt = document.getElementById("scHeroCount");
+    if (cnt) cnt.textContent = LIST.length;
+    if (heroCnt) heroCnt.textContent = LIST.length;
+    var tip = document.getElementById("scResultTip");
+    if (tip) {
+      var com = LIST.filter(function(s){ return s.source === "community"; }).length;
+      tip.textContent = VIEW.length === LIST.length
+        ? ("共 " + LIST.length + " 个策略（社区投稿 " + com + " · 官方示例 " + (LIST.length - com) + "）")
+        : ("筛选出 " + VIEW.length + " / " + LIST.length + " 个策略");
+    }
+    if (!LIST.length) { grid.innerHTML = "<div class='muted' style='padding:20px'>广场装修中，首批策略即将上架…</div>"; return; }
+    if (!VIEW.length) { grid.innerHTML = "<div class='muted' style='padding:20px'>没有匹配的策略，试试放宽筛选条件。</div>"; return; }
+
+    grid.innerHTML = VIEW.map(function(s, i){
+      var comm = (s.source || "community") === "community";
+      var tag = s.plan
+        ? "<span class='tag'>" + esc(s.plan) + "</span>"
+        : (comm ? "<span class='tag tag-community'>社区投稿</span>" : "<span class='tag tag-gold'>官方示例</span>");
+      var n = COPIES[key(s)];
+      var copies = (typeof n === "number")
+        ? "<span class='sc-copies' title='被复制的次数'>📋 已复制 " + n + " 次</span>" : "";
+      var date = s.posted_at ? "<span>🗓 " + esc(s.posted_at) + "</span>" : "";
+      var fac = (s.factors || []).slice(0, 5).map(function(f){
+        return "<button class='sc-tagf' data-f='" + esc(f) + "'>" + esc(f) + "</button>";
+      }).join("");
+      return "<div class='card showcase-card'>" +
+        "<div class='sc-rank'>" + (i + 1) + "</div>" +
+        "<h3>" + esc(s.name) + "</h3>" +
+        "<p class='muted'>" + esc(s.desc || "") + "</p>" +
+        "<div class='showcase-meta'><span>📏 " + (s.rules || 0) + " 条规则</span>" +
+        "<span>📊 " + esc(s.buzz || "未回测（导入后可自行跑）") + "</span></div>" +
+        (fac ? "<div class='sc-factorlist'>" + fac + "</div>" : "") +
+        "<div class='showcase-meta'><span>👤 " + esc(s.author || "佚名") + "</span>" + date + tag + copies + "</div>" +
+        "<button class='btn copy-share' data-i='" + key(s) + "'>📋 复制分享串</button>" +
+        "<span class='copy-ok' data-k='" + key(s) + "'></span></div>";
+    }).join("");
+  }
+
+  /* ---- 因子筛选条 ---- */
+  function renderFactors(){
+    var bar = document.getElementById("scFactorBar");
+    if (!bar) return;
+    var seen = {}, counts = {};
+    LIST.forEach(function(s){ (s.factors || []).forEach(function(f){
+      seen[f] = 1; counts[f] = (counts[f] || 0) + 1; }); });
+    var fs = Object.keys(seen).sort(function(a, b){ return counts[b] - counts[a]; });
+    bar.innerHTML = "<span class='sc-flabel'>常用因子</span>" + fs.map(function(f){
+      return "<button class='sc-tagf' data-f='" + esc(f) + "'>" + esc(f) +
+             "<i>" + counts[f] + "</i></button>";
+    }).join("");
+  }
+
+  /* ---- 交互 ---- */
+  function bind(){
+    var q = document.getElementById("scQ");
+    if (q) q.addEventListener("input", function(){ state.q = this.value.trim(); apply(); });
+    [["scRules", "rules"], ["scSource", "source"], ["scSort", "sort"]].forEach(function(p){
+      var el = document.getElementById(p[0]);
+      if (el) el.addEventListener("change", function(){ state[p[1]] = this.value; apply(); });
+    });
+    var rs = document.getElementById("scReset");
+    if (rs) rs.addEventListener("click", function(){
+      state = { q: "", rules: "", source: "", factor: "", sort: "hot" };
+      if (q) q.value = "";
+      ["scRules", "scSource", "scSort"].forEach(function(id){
+        var e = document.getElementById(id); if (e) e.value = ""; });
+      document.querySelectorAll(".sc-tagf.on").forEach(function(n){ n.classList.remove("on"); });
+      apply();
+    });
+    document.addEventListener("click", function(ev){
+      var tf = ev.target.closest ? ev.target.closest(".sc-tagf") : null;
+      if (tf) {
+        var f = tf.getAttribute("data-f");
+        state.factor = (state.factor === f) ? "" : f;
+        document.querySelectorAll(".sc-tagf").forEach(function(n){
+          n.classList.toggle("on", n.getAttribute("data-f") === state.factor); });
+        apply();
+        return;
+      }
+      var btn = ev.target.closest ? ev.target.closest(".copy-share") : null;
+      if (!btn) return;
+      var id = btn.getAttribute("data-i");
+      var s = null;
+      for (var i = 0; i < VIEW.length; i++) if (key(VIEW[i]) === id) { s = VIEW[i]; break; }
+      if (!s) return;
+      var done = function(){
+        var tip = grid.querySelector(".copy-ok[data-k='" + id + "']");
+        if (tip) tip.textContent = "已复制，去软件里粘贴导入 ✓";
+        bumpCopy(id);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(s.share).then(done, function(){ fallback(); });
+      } else { fallback(); }
+      function fallback(){
+        var ta = document.createElement("textarea");
+        ta.value = s.share; document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); } catch(e){}
+        document.body.removeChild(ta); done();
+      }
+    });
+  }
+
   fetch("strategies.json?t=" + Date.now()).then(function(r){ return r.json(); })
     .then(function(d){
-      var list = (d && d.strategies) || [];
-      var cnt = document.getElementById("scCount");
-      var heroCnt = document.getElementById("scHeroCount");
-      if (cnt) cnt.textContent = list.length;
-      if (heroCnt) heroCnt.textContent = list.length;
-      if (!list.length) { grid.innerHTML = "<div class='muted' style='padding:20px'>广场装修中，首批策略即将上架…</div>"; return; }
-      grid.innerHTML = list.map(function(s, i){
-        var plan = s.plan
-          ? "<span class='tag'>" + esc(s.plan) + "</span>"
-          : "<span class='tag tag-gold'>官方示例</span>";
-        return "<div class='card showcase-card'>" +
-          "<div class='sc-rank'>" + (i + 1) + "</div>" +
-          "<h3>" + esc(s.name) + "</h3>" +
-          "<p class='muted'>" + esc(s.desc || "") + "</p>" +
-          "<div class='showcase-meta'><span>📏 " + (s.rules || 0) + " 条规则</span>" +
-          "<span>📊 " + esc(s.buzz || "未回测（导入后可自行跑）") + "</span></div>" +
-          "<div class='showcase-meta'><span>👤 " + esc(s.author || "佚名") + "</span>" + plan + "</div>" +
-          "<button class='btn copy-share' data-i='" + i + "'>📋 复制分享串</button>" +
-          "<span class='copy-ok' id='copy-ok-" + i + "'></span></div>";
-      }).join("");
-      grid.addEventListener("click", function(ev){
-        var btn = ev.target.closest ? ev.target.closest(".copy-share") : null;
-        if (!btn) return;
-        var s = list[+btn.getAttribute("data-i")];
-        var done = function(){
-          var tip = document.getElementById("copy-ok-" + btn.getAttribute("data-i"));
-          if (tip) tip.textContent = "已复制，去软件里粘贴导入 ✓";
-        };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(s.share).then(done, function(){ fallback(); });
-        } else { fallback(); }
-        function fallback(){
-          var ta = document.createElement("textarea");
-          ta.value = s.share; document.body.appendChild(ta); ta.select();
-          try { document.execCommand("copy"); } catch(e){}
-          document.body.removeChild(ta); done();
-        }
-      });
+      LIST = (d && d.strategies) || [];
+      bind();
+      renderFactors();
+      return loadCopies();
     })
+    .then(function(c){ COPIES = c || {}; apply(); })
     .catch(function(){ grid.innerHTML = "<div class='muted' style='padding:20px'>加载失败，请刷新重试。</div>"; });
-})();
-</script>
+})();</script>
 </body>
 </html>

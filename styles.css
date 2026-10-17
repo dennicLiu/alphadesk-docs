@@ -186,3 +186,28 @@ button.btn{cursor:pointer;font:inherit;}
 .sc-cta-txt{display:flex;flex-direction:column;gap:4px;flex:1 1 320px;}
 .sc-cta-txt b{font-size:16px;color:#fff;}
 .sc-cta-txt span{font-size:13px;color:#b9b9c6;line-height:1.6;}
+
+/* ===== 策略广场: 工具栏 / 因子筛选 / 复制计数 ===== */
+.sc-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 10px;}
+.sc-input,.sc-sel{padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.05);color:#e8e8ee;font-size:14px;font-family:inherit;outline:none;}
+.sc-input{flex:1 1 260px;min-width:200px;}
+.sc-input:focus,.sc-sel:focus{border-color:var(--gold-line);}
+.sc-sel{cursor:pointer;}
+.sc-reset{padding:9px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.14);
+  background:transparent;color:#b9b9c6;font-size:14px;cursor:pointer;}
+.sc-reset:hover{color:var(--gold);border-color:var(--gold-line);}
+
+.sc-factors{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:4px 0 8px;}
+.sc-flabel{font-size:12px;color:#8a8a98;margin-right:2px;}
+.sc-tagf{padding:3px 9px;border-radius:6px;font-size:12px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#b9b9c6;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+.sc-tagf:hover{color:var(--gold);border-color:var(--gold-line);}
+.sc-tagf.on{background:rgba(240,185,11,.16);border-color:var(--gold-line);color:var(--gold);}
+.sc-tagf i{font-style:normal;opacity:.55;margin-left:4px;}
+.sc-factorlist{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 2px;}
+
+.sc-tip{font-size:13px;color:#8a8a98;margin-bottom:10px;}
+.tag-community{background:rgba(61,220,132,.12);border-color:rgba(61,220,132,.35);color:#3ddc84;}
+.sc-copies{color:#8a8a98;font-size:13px;}

@@ -94,7 +94,9 @@ def validate_share(text: str) -> dict | None:
     if used - FACTORS:
         return None
     return {"name": str(body.get("name") or spec.get("name") or "策略")[:60],
-            "rule_count": len(rules)}
+            "rule_count": len(rules),
+            "factors": sorted(used)[:12],
+            "stop_loss_pct": spec.get("stop_loss_pct")}
 
 
 def _num(v, default=None):
@@ -167,6 +169,9 @@ def main() -> int:
                 "win_rate": score,
                 "buzz": (f"样本外成绩 {score:g}" if score is not None else ""),
                 "share": share,
+                "source": "community",
+                "factors": chk.get("factors") or [],
+                "posted_at": str(rec.get("created_time") or "")[:10],
             })
         url = (f"{API}{data['page_token']}&page_size=100"
                if data.get("has_more") and data.get("page_token") else "")

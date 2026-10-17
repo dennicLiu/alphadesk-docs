@@ -8,7 +8,14 @@
       "name": "超跌反弹",
       "rules": 2,
       "share": "ADS1-eyJuYW1lIjogIui2hei3jOWPjeW8uSIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDIwIiwgIm9wIjogImx0ZSIsICJ2YWx1ZSI6IC0xNX0sIHsiZmFjdG9yIjogInN0b3BfZmFsbCIsICJvcCI6ICJndGUiLCAidmFsdWUiOiAxfV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDUiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogOH1dfSwgImluaXRpYWxfY2FwaXRhbCI6IDEwMDAwMC4wLCAia2xpbmVfY291bnQiOiAyNjAsICJtYXhfaG9sZF9kYXlzIjogMjAsICJuYW1lIjogIui2hei3jOWPjeW8uSIsICJzdG9wX2xvc3NfcGN0IjogOCwgInRha2VfcHJvZml0X3BjdCI6IG51bGx9LCAic3VtIjogImQ4NzQyNzYzIiwgInYiOiAxfQ",
-      "win_rate": 52
+      "win_rate": 52,
+      "factors": [
+        "ret20",
+        "ret5",
+        "stop_fall"
+      ],
+      "source": "official",
+      "posted_at": "2026-10-17"
     },
     {
       "author": "官方示例",
@@ -17,7 +24,15 @@
       "id": "ex-junxian",
       "name": "均线多头",
       "rules": 3,
-      "share": "ADS1-eyJuYW1lIjogIuWdh-e6v-WkmuWktCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogIm1hX2J1bGwiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMX0sIHsiZmFjdG9yIjogIm1hMjBfc2xvcGUiLCAib3AiOiAiZ3QiLCAidmFsdWUiOiAwfSwgeyJmYWN0b3IiOiAidm9sdW1lX3JhdGlvXzUiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMS4yfV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDEwIiwgIm9wIjogImx0ZSIsICJ2YWx1ZSI6IC02fV19LCAiaW5pdGlhbF9jYXBpdGFsIjogMTAwMDAwLjAsICJrbGluZV9jb3VudCI6IDI2MCwgIm1heF9ob2xkX2RheXMiOiAzMCwgIm5hbWUiOiAi5Z2H57q_5aSa5aS0IiwgInN0b3BfbG9zc19wY3QiOiA2LCAidGFrZV9wcm9maXRfcGN0IjogbnVsbH0sICJzdW0iOiAiYjExYTRhMjQiLCAidiI6IDF9"
+      "share": "ADS1-eyJuYW1lIjogIuWdh-e6v-WkmuWktCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogIm1hX2J1bGwiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMX0sIHsiZmFjdG9yIjogIm1hMjBfc2xvcGUiLCAib3AiOiAiZ3QiLCAidmFsdWUiOiAwfSwgeyJmYWN0b3IiOiAidm9sdW1lX3JhdGlvXzUiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMS4yfV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDEwIiwgIm9wIjogImx0ZSIsICJ2YWx1ZSI6IC02fV19LCAiaW5pdGlhbF9jYXBpdGFsIjogMTAwMDAwLjAsICJrbGluZV9jb3VudCI6IDI2MCwgIm1heF9ob2xkX2RheXMiOiAzMCwgIm5hbWUiOiAi5Z2H57q_5aSa5aS0IiwgInN0b3BfbG9zc19wY3QiOiA2LCAidGFrZV9wcm9maXRfcGN0IjogbnVsbH0sICJzdW0iOiAiYjExYTRhMjQiLCAidiI6IDF9",
+      "factors": [
+        "ma20_slope",
+        "ma_bull",
+        "ret10",
+        "volume_ratio_5"
+      ],
+      "source": "official",
+      "posted_at": "2026-10-17"
     },
     {
       "author": "官方示例",
@@ -26,7 +41,14 @@
       "id": "ex-lianban",
       "name": "连板龙头",
       "rules": 2,
-      "share": "ADS1-eyJuYW1lIjogIui_nuadv-m-meWktCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogImxpbWl0X3VwX2RheXMiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMn0sIHsiZmFjdG9yIjogIm1mX3Njb3JlIiwgIm9wIjogImd0ZSIsICJ2YWx1ZSI6IDYwfV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDUiLCAib3AiOiAibHRlIiwgInZhbHVlIjogLTV9XX0sICJpbml0aWFsX2NhcGl0YWwiOiAxMDAwMDAuMCwgImtsaW5lX2NvdW50IjogMjYwLCAibWF4X2hvbGRfZGF5cyI6IDEwLCAibmFtZSI6ICLov57mnb_pvpnlpLQiLCAic3RvcF9sb3NzX3BjdCI6IDcsICJ0YWtlX3Byb2ZpdF9wY3QiOiBudWxsfSwgInN1bSI6ICI4OGY0NmRlOSIsICJ2IjogMX0"
+      "share": "ADS1-eyJuYW1lIjogIui_nuadv-m-meWktCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogImxpbWl0X3VwX2RheXMiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMn0sIHsiZmFjdG9yIjogIm1mX3Njb3JlIiwgIm9wIjogImd0ZSIsICJ2YWx1ZSI6IDYwfV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDUiLCAib3AiOiAibHRlIiwgInZhbHVlIjogLTV9XX0sICJpbml0aWFsX2NhcGl0YWwiOiAxMDAwMDAuMCwgImtsaW5lX2NvdW50IjogMjYwLCAibWF4X2hvbGRfZGF5cyI6IDEwLCAibmFtZSI6ICLov57mnb_pvpnlpLQiLCAic3RvcF9sb3NzX3BjdCI6IDcsICJ0YWtlX3Byb2ZpdF9wY3QiOiBudWxsfSwgInN1bSI6ICI4OGY0NmRlOSIsICJ2IjogMX0",
+      "factors": [
+        "limit_up_days",
+        "mf_score",
+        "ret5"
+      ],
+      "source": "official",
+      "posted_at": "2026-10-17"
     },
     {
       "name": "均线多头 + 量能确认",
@@ -34,7 +56,14 @@
       "rules": 2,
       "share": "ADS1-eyJuYW1lIjogIuWdh-e6v-WkmuWktCArIOmHj-iDveehruiupCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogIm1hX2J1bGwiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMX0sIHsiZmFjdG9yIjogInZvbHVtZV9yYXRpb181IiwgIm9wIjogImd0ZSIsICJ2YWx1ZSI6IDEuMn1dfSwgImV4aXQiOiB7Im9wIjogImFueSIsICJydWxlcyI6IFt7ImZhY3RvciI6ICJyZXQyMCIsICJvcCI6ICJsdGUiLCAidmFsdWUiOiAtOH1dfSwgImluaXRpYWxfY2FwaXRhbCI6IDEwMDAwMC4wLCAia2xpbmVfY291bnQiOiAyNjAsICJtYXhfaG9sZF9kYXlzIjogMzAsICJuYW1lIjogIuWdh-e6v-WkmuWktCArIOmHj-iDveehruiupCIsICJzdG9wX2xvc3NfcGN0IjogNiwgInRha2VfcHJvZml0X3BjdCI6IG51bGx9LCAic3VtIjogImQ5N2UyYjkzIiwgInYiOiAxfQ",
       "author": "官方示例",
-      "plan": "官方示例"
+      "plan": "官方示例",
+      "factors": [
+        "ma_bull",
+        "ret20",
+        "volume_ratio_5"
+      ],
+      "source": "official",
+      "posted_at": "2026-10-17"
     },
     {
       "name": "回踩均线不破",
@@ -42,7 +71,15 @@
       "rules": 3,
       "share": "ADS1-eyJuYW1lIjogIuWbnui4qeWdh-e6v-S4jeegtCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogIm1hX2J1bGwiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMX0sIHsiZmFjdG9yIjogInJldDUiLCAib3AiOiAibHRlIiwgInZhbHVlIjogLTV9LCB7ImZhY3RvciI6ICJ2b2x1bWVfcmF0aW9fNSIsICJvcCI6ICJsdGUiLCAidmFsdWUiOiAxLjB9XX0sICJleGl0IjogeyJvcCI6ICJhbnkiLCAicnVsZXMiOiBbeyJmYWN0b3IiOiAicmV0MjAiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMTJ9XX0sICJpbml0aWFsX2NhcGl0YWwiOiAxMDAwMDAuMCwgImtsaW5lX2NvdW50IjogMjYwLCAibWF4X2hvbGRfZGF5cyI6IDI1LCAibmFtZSI6ICLlm57ouKnlnYfnur_kuI3noLQiLCAic3RvcF9sb3NzX3BjdCI6IDUsICJ0YWtlX3Byb2ZpdF9wY3QiOiBudWxsfSwgInN1bSI6ICJmMTIwN2Q2NiIsICJ2IjogMX0",
       "author": "官方示例",
-      "plan": "官方示例"
+      "plan": "官方示例",
+      "factors": [
+        "ma_bull",
+        "ret20",
+        "ret5",
+        "volume_ratio_5"
+      ],
+      "source": "official",
+      "posted_at": "2026-10-17"
     },
     {
       "name": "连续下跌企稳",
@@ -50,7 +87,14 @@
       "rules": 2,
       "share": "ADS1-eyJuYW1lIjogIui_nue7reS4i-i3jOS8geeosyIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDIwIiwgIm9wIjogImx0ZSIsICJ2YWx1ZSI6IC0xNX0sIHsiZmFjdG9yIjogImhhbW1lciIsICJvcCI6ICJndGUiLCAidmFsdWUiOiAxfV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDEwIiwgIm9wIjogImd0ZSIsICJ2YWx1ZSI6IDh9XX0sICJpbml0aWFsX2NhcGl0YWwiOiAxMDAwMDAuMCwgImtsaW5lX2NvdW50IjogMjYwLCAibWF4X2hvbGRfZGF5cyI6IDE1LCAibmFtZSI6ICLov57nu63kuIvot4zkvIHnqLMiLCAic3RvcF9sb3NzX3BjdCI6IDYsICJ0YWtlX3Byb2ZpdF9wY3QiOiBudWxsfSwgInN1bSI6ICI3MjU4MDhhOSIsICJ2IjogMX0",
       "author": "官方示例",
-      "plan": "官方示例"
+      "plan": "官方示例",
+      "factors": [
+        "hammer",
+        "ret10",
+        "ret20"
+      ],
+      "source": "official",
+      "posted_at": "2026-10-17"
     },
     {
       "name": "低估值 + 放量启动",
@@ -58,7 +102,14 @@
       "rules": 2,
       "share": "ADS1-eyJuYW1lIjogIuS9juS8sOWAvCArIOaUvumHj-WQr-WKqCIsICJzcGVjIjogeyJlbnRyeSI6IHsib3AiOiAiYWxsIiwgInJ1bGVzIjogW3siZmFjdG9yIjogInBlX3JhdGlvIiwgIm9wIjogImx0ZSIsICJ2YWx1ZSI6IDE1fSwgeyJmYWN0b3IiOiAidm9sdW1lX3JhdGlvXzUiLCAib3AiOiAiZ3RlIiwgInZhbHVlIjogMS44fV19LCAiZXhpdCI6IHsib3AiOiAiYW55IiwgInJ1bGVzIjogW3siZmFjdG9yIjogInJldDIwIiwgIm9wIjogImd0ZSIsICJ2YWx1ZSI6IDE1fV19LCAiaW5pdGlhbF9jYXBpdGFsIjogMTAwMDAwLjAsICJrbGluZV9jb3VudCI6IDI2MCwgIm1heF9ob2xkX2RheXMiOiA0MCwgIm5hbWUiOiAi5L2O5Lyw5YC8ICsg5pS-6YeP5ZCv5YqoIiwgInN0b3BfbG9zc19wY3QiOiA3LCAidGFrZV9wcm9maXRfcGN0IjogbnVsbH0sICJzdW0iOiAiM2YwNzhmZDYiLCAidiI6IDF9",
       "author": "官方示例",
-      "plan": "官方示例"
+      "plan": "官方示例",
+      "factors": [
+        "pe_ratio",
+        "ret20",
+        "volume_ratio_5"
+      ],
+      "source": "official",
+      "posted_at": "2026-10-17"
     },
     {
       "name": "RSI 超卖 + 锤子线",
@@ -66,7 +117,14 @@
       "rules": 2,
       "share": "ADS1-eyJuYW1lIjogIlJTSSDotoXljZYgKyDplKTlrZDnur8iLCAic3BlYyI6IHsiZW50cnkiOiB7Im9wIjogImFsbCIsICJydWxlcyI6IFt7ImZhY3RvciI6ICJyc2k2IiwgIm9wIjogImx0ZSIsICJ2YWx1ZSI6IDIwfSwgeyJmYWN0b3IiOiAiaGFtbWVyIiwgIm9wIjogImd0ZSIsICJ2YWx1ZSI6IDF9XX0sICJleGl0IjogeyJvcCI6ICJhbnkiLCAicnVsZXMiOiBbeyJmYWN0b3IiOiAicmV0NSIsICJvcCI6ICJndGUiLCAidmFsdWUiOiA1fV19LCAiaW5pdGlhbF9jYXBpdGFsIjogMTAwMDAwLjAsICJrbGluZV9jb3VudCI6IDI2MCwgIm1heF9ob2xkX2RheXMiOiAxMCwgIm5hbWUiOiAiUlNJIOi2heWNliArIOmUpOWtkOe6vyIsICJzdG9wX2xvc3NfcGN0IjogNCwgInRha2VfcHJvZml0X3BjdCI6IG51bGx9LCAic3VtIjogImI2MjhmZWVkIiwgInYiOiAxfQ",
       "author": "官方示例",
-      "plan": "官方示例"
+      "plan": "官方示例",
+      "factors": [
+        "hammer",
+        "ret5",
+        "rsi6"
+      ],
+      "source": "official",
+      "posted_at": "2026-10-17"
     }
   ],
   "updated": "2026-10-17"
