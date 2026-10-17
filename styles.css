@@ -31,15 +31,15 @@ a{color:var(--gold);text-decoration:none;}
 .hero{padding:72px 0 48px;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(700px 300px at 50% -60px, rgba(240,185,11,.14), transparent 70%);}
-.hero h1{font-size:42px;margin:0 0 8px;letter-spacing:1px;position:relative;}
+.hero h1{font-size:42px;line-height:1.25;max-width:1000px;margin:0 auto 8px;letter-spacing:1px;position:relative;}
 .hero h1 b{color:var(--gold);}
 .hero .sub{color:var(--ink-2);font-size:16px;margin-bottom:6px;position:relative;}
-.hero .risk{color:var(--ink-3);font-size:12.5px;margin-bottom:28px;position:relative;}
-.hero .cta{display:flex;gap:12px;justify-content:center;position:relative;}
+.hero .risk{color:var(--ink-3);font-size:12.5px;margin:0 auto 28px;position:relative;max-width:900px;text-align:center;}
+.hero .cta{display:flex;gap:12px;justify-content:center;align-items:center;position:relative;flex-wrap:wrap;}
 .btn{display:inline-block;padding:12px 30px;border-radius:10px;font-size:15px;font-weight:700;
   background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1200;border:none;cursor:pointer;}
 .btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold-line);}
-.hero-stats{display:flex;gap:36px;justify-content:center;margin-top:44px;position:relative;flex-wrap:wrap;}
+.hero-stats{display:flex;gap:36px;justify-content:center;align-items:center;margin-top:44px;position:relative;flex-wrap:wrap;}
 .hero-stats div{text-align:center;}
 .hero-stats b{display:block;font-size:26px;color:var(--gold);}
 .hero-stats span{font-size:12.5px;color:var(--ink-2);}
@@ -57,7 +57,8 @@ section{padding:44px 0;}
   border:1px solid var(--gold-line);border-radius:20px;padding:2px 10px;margin-left:10px;}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr;}.hero h1{font-size:30px;}}
+@media(max-width:1100px){.hero h1{font-size:38px;}}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr;}.hero h1{font-size:30px;}.hero-proof{font-size:13px;}}
 .feat b{color:var(--gold);}
 .feat ul{margin:8px 0 0;padding-left:20px;color:var(--ink-2);font-size:14px;}
 .feat li{margin:4px 0;}
@@ -163,8 +164,9 @@ button.btn{cursor:pointer;font:inherit;}
 .dl-chip b{color:var(--gold);font-size:18px;font-weight:700;}
 
 /* ===== 策略广场曝光增强 ===== */
-.hero-proof{display:flex;flex-wrap:wrap;gap:10px 22px;margin:14px 0 4px;font-size:14px;color:#c9c9d4;}
+.hero-proof{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 22px;margin:14px auto 4px;font-size:14px;color:#c9c9d4;text-align:center;}
 .hero-proof b{color:var(--gold);font-weight:700;}
+.dl-links{text-align:center;}
 
 #showcase .sec-title{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
 .sc-count{font-size:14px;font-weight:400;color:#9a9aa8;}
