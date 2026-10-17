@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""统计 GitHub Release 资产真实下载量, 写回 version.json(定时任务调用)。
-
-只统计 AlphaDesk-*.zip 安装包, 排除演示视频等资产。
-同一版本同时存在 "AlphaDesk-<版本>-win.zip" 与 "AlphaDesk-latest-win.zip",
-是同一份内容的两个文件名, 用户从哪个链接下就只计到哪一个, 直接求和即可。
-"""
+"""统计 GitHub Release 资产真实下载量, 写回 version.json(定时任务调用)。"""
 import json
 import os
 import subprocess
@@ -14,7 +9,7 @@ from pathlib import Path
 REPO = os.environ.get("REPO", "dennicLiu/alphadesk-app")
 VERSION_JSON = Path(__file__).resolve().parent.parent / "version.json"
 JQ = ('.[] | .assets[] | select(.name | test("^AlphaDesk-.*[.]zip$"))'
-      ' | .download_count')
+      ' | "\\(.name)|\\(.download_count)"')
 
 
 def fetch_counts(repo):
@@ -25,18 +20,29 @@ def fetch_counts(repo):
     )
     if out.returncode != 0:
         raise SystemExit("gh api 失败: " + out.stderr.strip()[:300])
-    return [int(x) for x in out.stdout.split() if x.strip().isdigit()]
+    counts = {}
+    for line in out.stdout.splitlines():
+        if "|" not in line:
+            continue
+        name, cnt = line.rsplit("|", 1)
+        if not cnt.strip().isdigit():
+            continue
+        low = name.lower()
+        key = "win" if "win" in low else ("mac" if "mac" in low else "other")
+        counts[key] = counts.get(key, 0) + int(cnt.strip())
+    return counts
 
 
 def main():
     counts = fetch_counts(REPO)
-    total = sum(counts)
+    win, mac = counts.get("win", 0), counts.get("mac", 0)
+    total = win + mac
     data = json.loads(VERSION_JSON.read_text(encoding="utf-8"))
-    data.setdefault("stats", {})["github"] = total
-    data["stats"]["updated"] = date.today().isoformat()
+    data["stats"] = {"github": total, "win": win, "mac": mac,
+                     "updated": date.today().isoformat()}
     VERSION_JSON.write_text(
         json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("资产数", len(counts), "真实累计下载", total)
+    print("Windows", win, "+ Mac", mac, "= 合计", total)
     return 0
 
 

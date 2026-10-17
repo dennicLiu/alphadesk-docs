@@ -325,9 +325,9 @@
     <h2 class="sec-title">下载</h2>
     <div class="sec-sub">7 天全功能试用，不用先付钱。到期觉得没用，删了就行。</div>
     <div class="dl-badges">
-      <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/v1.0.15/AlphaDesk-1.0.15-mac.zip?label=Mac%E4%B8%8B%E8%BD%BD" alt="Mac下载" />
-      <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/v1.0.15/AlphaDesk-1.0.15-win.zip?label=Win%E4%B8%8B%E8%BD%BD" alt="Win下载" />
-      <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/total?label=%E7%B4%AF%E8%AE%A1%E4%B8%8B%E8%BD%BD" alt="累计下载" />
+      <span class="dl-chip"><b id="dlMac">-</b>Mac 版下载</span>
+      <span class="dl-chip"><b id="dlWin">-</b>Windows 版下载</span>
+      <span class="dl-chip"><b id="dlSum">-</b>累计下载</span>
     </div>
     <div class="price-grid">
       <div class="card price">
@@ -580,6 +580,9 @@
       var st = d.stats || {};
       var t = (st.github||0) + (st.gitcode||0);
       if (el && t > 0) { el.textContent = t; el.title = "累计下载 " + t + " 次"; }
+      // 下载区三个数字与顶部同源(同一份 version.json), 保证 Mac+Win == 累计
+      function setNum(id, v) { var n = document.getElementById(id); if (n && v != null) n.textContent = v; }
+      setNum("dlMac", st.mac); setNum("dlWin", st.win); setNum("dlSum", st.github);
       // 版本号统一由 version.json 驱动, 发版只改 json, 不用动 HTML
       if (d.latest) {
         document.querySelectorAll(".ver-auto").forEach(function(n){
