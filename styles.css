@@ -211,3 +211,9 @@ button.btn{cursor:pointer;font:inherit;}
 .sc-tip{font-size:13px;color:#8a8a98;margin-bottom:10px;}
 .tag-community{background:rgba(61,220,132,.12);border-color:rgba(61,220,132,.35);color:#3ddc84;}
 .sc-copies{color:#8a8a98;font-size:13px;}
+
+/* 因子按中文分组展示 */
+.sc-fgroup{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.sc-fgroup > i{font-style:normal;font-size:11px;color:var(--gold);opacity:.75;
+  margin-right:1px;padding:1px 5px;border-radius:4px;background:rgba(240,185,11,.10);}
+.sc-tagf u{text-decoration:none;opacity:.5;margin-left:4px;font-size:11px;}

@@ -267,7 +267,7 @@
     <div class="sec-sub">别人已经跑通并公开参数的战法，点「复制分享串」粘进软件的<b>量化实验室</b>即可一键导入回测。
       想要自己的策略出现在这里？<a href="share.html" class="sc-post-link">投稿 →</a></div>
     <div class="sc-toolbar">
-      <input id="scQ" class="sc-input" type="search" placeholder="🔍 搜策略名 / 简介 / 作者 / 因子，如 ma_bull、hammer" autocomplete="off" />
+      <input id="scQ" class="sc-input" type="search" placeholder="🔍 搜策略名 / 简介 / 作者，如 均线多头、锤子线、超跌" autocomplete="off" />
       <select id="scRules" class="sc-sel">
         <option value="">全部规则数</option>
         <option value="1-2">1~2 条（轻量）</option>
@@ -641,6 +641,9 @@
   var LIST = [];          // 原始数据
   var VIEW = [];          // 当前筛选结果
   var COPIES = {};        // id -> 复制次数(来自计数器, 取不到就不显示)
+  var FLABEL = {};        // 因子英文 key -> 中文名
+  var FGROUP = {};        // 因子英文 key -> 分组
+  var FG = {};
   var state = { q: "", rules: "", source: "", factor: "", sort: "hot" };
 
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
@@ -701,8 +704,10 @@
     if (state.factor && (s.factors || []).indexOf(state.factor) < 0) return false;
     if (state.q) {
       var q = state.q.toLowerCase();
-      var hay = [s.name, s.desc, s.author].concat(s.factors || []).join(" ").toLowerCase();
-      if (hay.indexOf(q) < 0) return false;
+      // 命中范围: 名称/简介/作者 + 因子中文名 + 因子英文 key(老链接仍可用)
+      var hits = [s.name, s.desc, s.author].concat(s.factors || []).join(" ").toLowerCase();
+      var cn = (s.factors || []).map(function(f){ return FLABEL[f] || ""; }).join(" ").toLowerCase();
+      if (hits.indexOf(q) < 0 && cn.indexOf(q) < 0) return false;
     }
     return true;
   }
@@ -737,7 +742,8 @@
         ? "<span class='sc-copies' title='被复制的次数'>📋 已复制 " + n + " 次</span>" : "";
       var date = s.posted_at ? "<span>🗓 " + esc(s.posted_at) + "</span>" : "";
       var fac = (s.factors || []).slice(0, 5).map(function(f){
-        return "<button class='sc-tagf' data-f='" + esc(f) + "'>" + esc(f) + "</button>";
+        return "<button class='sc-tagf' data-f='" + esc(f) + "' title='" + esc(f) + "'>" +
+               esc(FLABEL[f] || f) + "</button>";
       }).join("");
       return "<div class='card showcase-card'>" +
         "<div class='sc-rank'>" + (i + 1) + "</div>" +
@@ -760,10 +766,17 @@
     LIST.forEach(function(s){ (s.factors || []).forEach(function(f){
       seen[f] = 1; counts[f] = (counts[f] || 0) + 1; }); });
     var fs = Object.keys(seen).sort(function(a, b){ return counts[b] - counts[a]; });
-    bar.innerHTML = "<span class='sc-flabel'>常用因子</span>" + fs.map(function(f){
-      return "<button class='sc-tagf' data-f='" + esc(f) + "'>" + esc(f) +
-             "<i>" + counts[f] + "</i></button>";
-    }).join("");
+    // 按分组渲染, 只显示本批策略里真实出现过的因子; 中文名为主, 英文 key 放 title
+    var used = {};
+    fs.forEach(function(f){ used[(FG[f] || "其他")] = 1; });
+    bar.innerHTML = "<span class='sc-flabel'>策略用到的因子</span>" +
+      Object.keys(used).map(function(g){
+        var ks = fs.filter(function(f){ return (FG[f] || "其他") === g; });
+        return "<span class='sc-fgroup'><i>" + esc(g) + "</i>" + ks.map(function(f){
+          return "<button class='sc-tagf' data-f='" + esc(f) + "' title='" + esc(f) + "'>" +
+                 esc(FLABEL[f] || f) + "<u>" + counts[f] + "</u></button>";
+        }).join("") + "</span>";
+      }).join("");
   }
 
   /* ---- 交互 ---- */
@@ -816,8 +829,13 @@
     });
   }
 
-  fetch("strategies.json?t=" + Date.now()).then(function(r){ return r.json(); })
-    .then(function(d){
+  Promise.all([
+    fetch("factor_labels.json").then(function(r){ return r.json(); }).catch(function(){ return null; }),
+    fetch("strategies.json?t=" + Date.now()).then(function(r){ return r.json(); })
+  ]).then(function(res){
+      var meta = res[0] || {}, d = res[1] || {};
+      FLABEL = meta.labels || {};
+      FGROUP = meta.group_of || {};
       LIST = (d && d.strategies) || [];
       bind();
       renderFactors();
