@@ -47,7 +47,7 @@
     </div>
     <div class="risk">⚠️ 本产品为量化研究工具，所有评分、选股结果与 AI 结论仅供学习研究，不构成投资建议。市场有风险，投资需谨慎。</div>
     <div class="cta">
-      <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/latest">⬇ 免费下载试用</a>
+      <a class="btn" id="heroDownload" href="https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip">⬇ 免费下载试用</a>
       <a class="btn ghost" href="#showcase">🧬 逛策略广场</a>
       <a class="btn ghost" href="manual.html">📖 操作手册</a>
       <a class="btn ghost" href="#price">查看价格</a>
@@ -860,5 +860,24 @@
     .then(function(c){ COPIES = c || {}; apply(); })
     .catch(function(){ grid.innerHTML = "<div class='muted' style='padding:20px'>加载失败，请刷新重试。</div>"; });
 })();</script>
+<script>
+(function(){
+  var button = document.getElementById("heroDownload");
+  if (!button) return;
+  var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || "";
+  var isWindows = /Win/i.test(platform);
+  var isMac = /Mac/i.test(platform) || /Macintosh|Mac OS X/i.test(navigator.userAgent || "");
+  var downloadUrl = isWindows
+    ? "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-win.zip"
+    : isMac
+      ? "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip"
+      : "https://github.com/dennicLiu/alphadesk-app/releases/latest";
+  button.href = downloadUrl;
+  button.addEventListener("click", function(event){
+    event.preventDefault();
+    window.location.href = downloadUrl;
+  });
+})();
+</script>
 </body>
 </html>
