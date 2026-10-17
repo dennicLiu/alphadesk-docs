@@ -53,8 +53,8 @@
       <div class="muted">🎬 80 秒看懂 AlphaDesk：选股 → 回测 → 阿罗 → 通达信导入（有声）</div>
     </div>
     <div class="dl-links">
-      Mac <a href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.14-mac.zip">v1.0.14 正式版</a>
-      · Windows <a href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.14-win.zip">v1.0.14 正式版</a>
+      Mac <a href="https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip">v<span class="ver-auto">–</span> 正式版</a>
+      · Windows <a href="https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-win.zip">v<span class="ver-auto">–</span> 正式版</a>
       · 阿罗智能体 + K线大屏 + 激活文件导入
     </div>
     <div class="hero-stats">
@@ -325,31 +325,31 @@
     <h2 class="sec-title">下载</h2>
     <div class="sec-sub">7 天全功能试用，不用先付钱。到期觉得没用，删了就行。</div>
     <div class="dl-badges">
-      <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/v1.0.1/AlphaDesk-1.0.14-mac.zip?label=Mac%E4%B8%8B%E8%BD%BD" alt="Mac下载" />
-      <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/v1.0.1/AlphaDesk-1.0.14-win.zip?label=Win%E4%B8%8B%E8%BD%BD" alt="Win下载" />
+      <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/v1.0.15/AlphaDesk-1.0.15-mac.zip?label=Mac%E4%B8%8B%E8%BD%BD" alt="Mac下载" />
+      <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/v1.0.15/AlphaDesk-1.0.15-win.zip?label=Win%E4%B8%8B%E8%BD%BD" alt="Win下载" />
       <img src="https://img.shields.io/github/downloads/dennicLiu/alphadesk-app/total?label=%E7%B4%AF%E8%AE%A1%E4%B8%8B%E8%BD%BD" alt="累计下载" />
     </div>
     <div class="price-grid">
       <div class="card price">
         <div class="p-name">🍎 Mac 版 <span class="tag">正式</span></div>
-        <div class="p-num">v1.0.13</div>
+        <div class="p-num">v<span class="ver-auto">–</span></div>
         <ul>
           <li>macOS 11+，Intel / Apple 芯片</li>
           <li>双击即用，约 3 秒进软件</li>
           <li>首次打开需 xattr 去隔离（仓库有写）</li>
         </ul>
-        <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.14-mac.zip">下载 Mac 版</a>
+        <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip">下载 Mac 版</a>
         <div class="sec-sub" style="margin-top:8px">🅰️ 含阿罗智能体、K线大屏、激活文件导入</div>
       </div>
       <div class="card price">
         <div class="p-name">🪟 Windows 版 <span class="tag">正式</span></div>
-        <div class="p-num">v1.0.13</div>
+        <div class="p-num">v<span class="ver-auto">–</span></div>
         <ul>
           <li>Win10/11 64 位，解压到桌面</li>
           <li>双击 start.bat 启动</li>
           <li>SmartScreen 选"仍要运行"</li>
         </ul>
-        <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.1/AlphaDesk-1.0.14-win.zip">下载 Windows 版</a>
+        <a class="btn" href="https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-win.zip">下载 Windows 版</a>
         <div class="sec-sub" style="margin-top:8px">🅰️ 功能与 Mac 版一致（阿罗智能体 + K线大屏 + 激活文件导入）</div>
       </div>
     </div>
@@ -480,7 +480,11 @@
     <div class="card">
       <div class="timeline">
         <div class="ver">
-          <b>v1.0.14</b><span>最新</span>
+          <b>v<span class="ver-auto">–</span></b><span>最新</span>
+          <p><b>启动前环境体检（24 项）。</b>启动即体检并写入 logs/env_check.log：系统版本、路径中文/空格、目录可写、磁盘空间、受控文件夹访问、<b>回环 socketpair（白屏元凶）</b>、端口占用、hosts、360/火绒/管家/天擎/深信服/联软/ToDesk 等拦截源、依赖 DLL、打包完整性、VC++ 运行库。关键项不通过直接弹窗说明原因。打不开只需把 logs 文件夹发给卖家。</p>
+        </div>
+        <div class="ver">
+          <b>v1.0.14</b>
           <p><b>Windows 启动诊断加固。</b>启动过程分阶段写日志，任何启动期异常都会弹窗并生成 startup_error.log，便于定位白屏/连接被拒问题；Windows 版改为"服务就绪后再自动打开浏览器"，重复双击复用已运行实例。</p>
         </div>
         <div class="ver">
@@ -571,12 +575,17 @@
 <script>
 (function(){
   var el = document.getElementById("dlTotal");
-  if (!el) return;
   fetch("version.json?t=" + Date.now()).then(function(r){ return r.json(); })
     .then(function(d){
       var st = d.stats || {};
       var t = (st.github||0) + (st.gitcode||0);
-      if (t > 0) { el.textContent = t; el.title = "累计下载 " + t + " 次"; }
+      if (el && t > 0) { el.textContent = t; el.title = "累计下载 " + t + " 次"; }
+      // 版本号统一由 version.json 驱动, 发版只改 json, 不用动 HTML
+      if (d.latest) {
+        document.querySelectorAll(".ver-auto").forEach(function(n){
+          n.textContent = d.latest;
+        });
+      }
     }).catch(function(){});
 })();
 </script>
