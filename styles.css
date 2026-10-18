@@ -85,6 +85,14 @@ code{background:#0b0e13;border:1px solid var(--line);border-radius:6px;
 /* 价格 */
 .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media(max-width:760px){.price-grid{grid-template-columns:1fr;}}
+.contact-coffee-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:16px 0;align-items:stretch;}
+.contact-card{margin:0;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-width:0;}
+.contact-card h3{margin:0 0 14px;font-size:16px;color:var(--ink);}
+.contact-card img{display:block;width:min(180px,100%);aspect-ratio:1;object-fit:cover;border-radius:10px;}
+.contact-card .muted{margin:10px 0 0;line-height:1.6;}
+.contact-card.coffee-card img{width:min(180px,100%);margin-top:auto;}
+.contact-card.coffee-card .muted{min-height:44px;}
+@media(max-width:760px){.contact-coffee-row{grid-template-columns:1fr;}.contact-card{width:100%;}.contact-card img{width:min(200px,100%);}}
 .price{border:2px solid var(--gold-line);text-align:center;padding:28px 20px;position:relative;}
 .price.hot{border-color:var(--gold);box-shadow:0 0 32px rgba(240,185,11,.15);}
 .price .p-name{font-size:15px;color:var(--ink-2);}
