@@ -90,7 +90,7 @@ code{background:#0b0e13;border:1px solid var(--line);border-radius:6px;
 .contact-card h3{margin:0 0 10px;font-size:15px;color:var(--ink);}
 .contact-card img{display:block;width:190px;height:190px;max-width:100%;object-fit:contain;border-radius:8px;}
 .contact-card .muted{margin:8px 0 0;line-height:1.5;font-size:12px;}
-.contact-card.coffee-card img{width:165px;height:165px;margin-top:0;}
+.contact-card.coffee-card img{width:190px;height:190px;margin-top:0;}
 .contact-card.coffee-card .muted{min-height:38px;}
 @media(max-width:520px){.contact-coffee-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}.contact-card{padding:12px 6px;}.contact-card h3{font-size:12px;}.contact-card img,.contact-card.coffee-card img{width:clamp(58px,18vw,90px);height:clamp(58px,18vw,90px);}.contact-card .muted{font-size:10px;}}
 .price{border:2px solid var(--gold-line);text-align:center;padding:28px 20px;position:relative;}
