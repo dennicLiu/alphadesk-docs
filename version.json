@@ -1,11 +1,11 @@
 {
-  "latest": "1.0.17",
-  "notes": "新增日经225、韩国KOSPI和KOSPI200指数跟踪；增强授权有效期校验，降低系统时间回拨造成的误判。",
+  "latest": "1.0.18",
+  "notes": "自我进化启动即显示股票池准备与拉取进度；量化选股、回测支持多板块范围；修复历史策略兼容与回测交易详情。",
   "assets": {
     "mac": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip",
-    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.17/AlphaDesk-1.0.17-mac.zip",
+    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.18/AlphaDesk-1.0.18-mac.zip",
     "win": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-win.zip",
-    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.17/AlphaDesk-1.0.17-win.zip"
+    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.18/AlphaDesk-1.0.18-win.zip"
   },
   "stats": {
     "github": 96,
