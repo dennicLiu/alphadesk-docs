@@ -1,16 +1,16 @@
 {
-  "latest": "1.0.18",
-  "notes": "自我进化启动即显示股票池准备与拉取进度；量化选股、回测支持多板块范围；修复历史策略兼容与回测交易详情。",
+  "latest": "1.0.19",
+  "notes": "全托管策略进化改为无限迭代直到手动暂停，运行中实时刷新冠军与排行；回测改为停牌/无成交量日不撮合、印花税按 2023-08-28 起 0.5‰ 自动切换；前端静态资源版本自动失效，升级后无需清缓存。",
   "assets": {
     "mac": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip",
-    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.18/AlphaDesk-1.0.18-mac.zip",
+    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.19/AlphaDesk-1.0.19-mac.zip",
     "win": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-win.zip",
-    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.18/AlphaDesk-1.0.18-win.zip"
+    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.19/AlphaDesk-1.0.19-win.zip"
   },
   "stats": {
     "github": 115,
     "win": 79,
     "mac": 36,
-    "updated": "2026-10-20"
+    "updated": "2026-10-21"
   }
 }
