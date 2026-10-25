@@ -1,1 +1,16 @@
-{"latest":"1.0.21","notes":"新增隔离的分时做T模拟账户与自动策略；仅使用新鲜东财分钟线，在A股连续竞价期间运行，支持T+1、滑点和亏损/仓位风控。模拟交易不会连接券商，结果不代表真实可成交或未来收益。量化进化搜索反馈与构建冒烟检查同步增强。","assets":{"mac":"https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip","mac_fallback":"https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.21/AlphaDesk-1.0.21-mac.zip","win":"https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-win.zip","win_fallback":"https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.21/AlphaDesk-1.0.21-win.zip"},"stats":{"github":131,"win":91,"mac":40,"updated":"2026-10-25"}}
+{
+  "latest": "1.0.21",
+  "notes": "新增隔离的分时做T模拟账户与自动策略；仅使用新鲜东财分钟线，在A股连续竞价期间运行，支持T+1、滑点和亏损/仓位风控。模拟交易不会连接券商，结果不代表真实可成交或未来收益。量化进化搜索反馈与构建冒烟检查同步增强。",
+  "assets": {
+    "mac": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip",
+    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.21/AlphaDesk-1.0.21-mac.zip",
+    "win": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-win.zip",
+    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.21/AlphaDesk-1.0.21-win.zip"
+  },
+  "stats": {
+    "github": 131,
+    "win": 91,
+    "mac": 40,
+    "updated": "2026-10-25"
+  }
+}
