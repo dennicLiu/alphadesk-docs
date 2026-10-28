@@ -1,11 +1,11 @@
 {
-  "latest": "1.0.21",
-  "notes": "新增隔离的分时做T模拟账户与自动策略；仅使用新鲜东财分钟线，在A股连续竞价期间运行，支持T+1、滑点和亏损/仓位风控。模拟交易不会连接券商，结果不代表真实可成交或未来收益。量化进化搜索反馈与构建冒烟检查同步增强。",
+  "latest": "1.0.22",
+  "notes": "分时行情与策略可观测性升级：分钟数据不可用时明确回退展示日K但不用于自动做T；展示闭市等待及行情暂停原因；记录行情缺失、过期、来源或价格异常的跳过原因，按分钟去重。自动模拟仅接受新鲜分钟行情，继续执行T+1、滑点、仓位与亏损风控。",
   "assets": {
     "mac": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-mac.zip",
-    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.21/AlphaDesk-1.0.21-mac.zip",
+    "mac_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.22/AlphaDesk-1.0.22-mac.zip",
     "win": "https://github.com/dennicLiu/alphadesk-app/releases/latest/download/AlphaDesk-latest-win.zip",
-    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.21/AlphaDesk-1.0.21-win.zip"
+    "win_fallback": "https://github.com/dennicLiu/alphadesk-app/releases/download/v1.0.22/AlphaDesk-1.0.22-win.zip"
   },
   "stats": {
     "github": 132,
