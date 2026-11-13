@@ -28,6 +28,7 @@
     <li><a href="#pool">第一步：建自选池</a></li>
     <li><a href="#screen">第二步：一句话选股</a></li>
     <li><a href="#backtest">第三步：回测验证（最重要的 10 分钟）</a></li>
+    <li><a href="#breadth">市场环境温度计：TRIN 与全市场宽度 🆕</a></li>
     <li><a href="#history">历史研究：任意条件回放 🆕</a></li>
     <li><a href="#hold">第四步：模拟持仓盯盈亏</a></li>
     <li><a href="#daytrade">分时做 T：自动模拟交易</a></li>
@@ -99,6 +100,20 @@
   </ol>
   <p class="muted">写法技巧：用"或"表示任一满足；回放日期可填过去某天，验证"当时能不能选出来"。断网也能筛历史（数据在本地）。</p>
     <img class="shot" src="assets/screener-v101.png" alt="智能选股器" /></div>
+</section>
+
+<section id="breadth">
+  <h2 class="sec-title">市场环境温度计：TRIN 与全市场宽度 <span class="tag">v1.0.24 新增</span></h2>
+  <div class="card">
+    <p>仪表盘的「市场情绪」卡片现在会扫描全 A 股，展示涨跌家数、涨停/跌停、中位数涨幅，以及 TRIN 和量价结构。它是<strong>大盘环境过滤器</strong>，不是直接选股或个股买卖信号。</p>
+    <ul>
+      <li><code>TRIN额 &lt; 1</code>：上涨方向成交额相对更强，通常表示资金向上涨方向集中。</li>
+      <li><code>TRIN量</code>：用成交量口径观察量能是否同步支持上涨。</li>
+      <li><code>量价差</code>：本系统定义为涨量占比减涨家占比；负值表示上涨家数扩散快于上涨成交量，需结合 TRIN 额一起判断。</li>
+      <li>显示「资金强于宽度，偏多环境」后，再进入 AI 分析或量化实验室研究个股；显示「谨慎」或「等待确认」时，不应据此自动下单。</li>
+    </ul>
+    <p class="warn">行情来自公开数据源，可能存在延迟、缺失或缓存。TRIN 环境判断仅供研究参考，不构成投资建议。</p>
+  </div>
 </section>
 
 <section id="history">
