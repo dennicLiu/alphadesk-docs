@@ -30,6 +30,7 @@
       <a href="#price">购买</a>
       <a href="#faq">常见问题</a>
       <a href="#changelog">版本历史</a>
+      <button id="accountBtn" class="account-btn" type="button">登录 / 注册</button>
       <a href="#price" class="buy-btn">立即购买</a>
     </nav>
   </div>
@@ -78,7 +79,7 @@
 <section id="intro">
   <div class="wrap">
     <h2 class="sec-title">产品介绍</h2>
-    <div class="sec-sub">装在自己电脑上的量化研究工作台，数据留在本机，不注册、不登录。</div>
+    <div class="sec-sub">装在自己电脑上的量化研究工作台，研究数据留在本机；官网支持注册登录、套餐购买和订单查询。</div>
     <div class="card">
       <p style="margin:0;color:var(--ink-2)">
         AlphaDesk 是一个面向个人投资者的<b style="color:var(--gold)">单机量化研究终端</b>。
@@ -101,7 +102,7 @@
         <h3>🔒 数据完全私有</h3>
         <ul>
           <li>自选池、策略、分析记录全部存本机</li>
-          <li>不注册账号、不收集手机号</li>
+          <li>官网账号仅用于购买、订单和授权服务</li>
           <li>行情缓存也在本地，断网可看历史数据</li>
         </ul>
       </div>
@@ -355,7 +356,7 @@
         <div class="kv"><span>免费试用</span><b>7 天全功能</b></div>
         <div class="kv"><span>换机政策</span><b>重新获取激活码</b></div>
         <div class="kv"><span>数据归属</span><b>100% 本机保存</b></div>
-        <div class="kv"><span>账号体系</span><b>无（不注册不登录）</b></div>
+        <div class="kv"><span>账号体系</span><b>官网支持注册登录</b></div>
       </div>
     </div>
     <div class="card">
@@ -420,7 +421,7 @@
           <li>1 台设备</li>
           <li>微信答疑</li>
         </ul>
-        <button class="btn ghost wx-buy" data-plan="月卡 ¥29.9/月">联系购买</button>
+        <button class="btn ghost purchase-btn" data-plan="月卡 ¥29.9/月">立即购买</button>
       </div>
       <div class="card price hot">
         <div class="p-name">年卡 <span class="tag">推荐</span></div>
@@ -431,7 +432,7 @@
           <li>版本升级 + 微信答疑</li>
           <li>选股方案模板</li>
         </ul>
-        <button class="btn wx-buy" data-plan="年卡 ¥299/年">立即购买</button>
+        <button class="btn purchase-btn" data-plan="年卡 ¥299/年">立即购买</button>
       </div>
     </div>
     <div class="card" style="text-align:center">
@@ -492,7 +493,7 @@
       <div class="a">把整个软件文件夹拷到新电脑即可（数据跟着走）。激活码与本机绑定，换机需要联系卖家重新获取，年卡用户免费换机。</div></div>
 
     <div class="faq"><div class="q">我的自选股和策略会被上传吗？</div>
-      <div class="a">不会。软件为纯单机运行，无账号体系，所有数据只在你本机的 data 目录里。断网也能查看已有数据和回测记录。</div></div>
+      <div class="a">软件的自选池、策略和回测记录仍保存在本机 data 目录里。官网账号只用于注册、登录、购买套餐和查看订单，不会上传你的本地研究数据。</div></div>
 
     <div class="faq"><div class="q">AI 功能需要额外付费吗？</div>
       <div class="a">AI 分析使用你自己配置的接口密钥，费用由你与接口服务商结算，软件本身不额外收费。不配置密钥时，选股、回测、因子分析等核心功能完全可用。</div></div>
@@ -519,16 +520,17 @@
     <div class="card">
       <div class="timeline">
         <div class="ver">
-          <b>v<span class="ver-auto">–</span></b><span>最新</span>
-          <p><b>全市场宽度与 TRIN 环境温度计。</b>仪表盘新增 TRIN 额/量、涨跌家数、涨量/涨额占比和量价差，帮助先判断市场环境，再进行个股研究；同时完善分时做 T 提示与使用说明。历史研究与通用事件回放继续保留。</p>
+          <b>v1.0.23</b><span>最新</span>
+          <p><b>历史研究：任意条件回放。</b>新增指数、单只股票、自选池和板块股票池研究对象；条件复用全部因子并支持多规则组合、自然语言解析；观察周期可选 1/3/5/10/20/60/120 个交易日，结果包含同期基准、胜率超额、平均超额、分年稳定性、分标的统计与触发明细。新增“当日涨跌幅%”因子；修复重复启动反复打开浏览器标签页。</p>
         </div>
         <div class="ver">
-          <b>v1.0.20</b>
-          <p><b>策略进化评分与验证升级。</b>训练/探索/稳健分层评分，3 个重叠滚动验证窗与成本 +50% 压力测试；默认 520 根日K，增强候选多样性和历史股票范围追溯；服务就绪后自动打开浏览器。</p>
+          <b>v1.0.22</b>
+          <p><b>分时做 T 体验升级。</b>分钟线不可用时回退显示日 K并明确标注；策略状态与行情跳过原因可追溯；自动模拟只使用通过来源和时效校验的新鲜分钟线。</p>
         </div>
         <div class="ver">
-          <b>v1.0.18</b>
-          <p><b>量化实验与启动体验更新。</b>自我进化可选自选股、创业板、科创板、主板、北交所；点击启动即显示状态，股票池拉取与行情预下载在后台持续更新进度，失败时给出具体错误。选股和回测支持多板块范围，回测风控参数布局与历史策略兼容性同步优化。</p>
+          <b>v<span class="ver-auto">–</span></b>
+          <p><b>启动前环境体检（24 项）。</b>启动即体检并写入 logs/env_check.log：系统版本、路径中文/空格、目录可写、磁盘空间、受控文件夹访问、<b>回环 socketpair（白屏元凶）</b>、端口占用、hosts、360/火绒/管家/天擎/深信服/联软/ToDesk 等拦截源、依赖 DLL、打包完整性、VC++ 运行库。关键项不通过直接弹窗说明原因。打不开只需把 logs 文件夹发给卖家。</p>
+        </div>
         </div>
         <div class="ver">
           <b>v1.0.14</b>
@@ -607,6 +609,34 @@
   </div>
 </footer>
 
+<div class="auth-modal" id="authModal" role="dialog" aria-modal="true" aria-label="账号登录">
+  <div class="auth-card">
+    <button class="wxmodal-x" id="authModalX" aria-label="关闭">×</button>
+    <div class="wxmodal-kicker">ALPHADESK · CLOUD ACCOUNT</div>
+    <h2 id="authTitle">登录 AlphaDesk</h2>
+    <p class="auth-sub">登录后可购买套餐、查询支付订单，并在不同设备使用同一个账号。</p>
+    <form id="authForm">
+      <input id="authEmail" type="email" placeholder="邮箱" autocomplete="email" required />
+      <input id="authName" type="text" placeholder="昵称（注册时填写）" autocomplete="name" hidden />
+      <input id="authPassword" type="password" placeholder="密码（至少 8 位）" autocomplete="current-password" minlength="8" required />
+      <button class="btn" id="authSubmit" type="submit">登录</button>
+    </form>
+    <p class="auth-message" id="authMessage"></p>
+    <button class="auth-switch" id="authSwitch" type="button">还没有账号？立即注册</button>
+  </div>
+</div>
+<div class="payment-modal" id="paymentModal" role="dialog" aria-modal="true" aria-label="选择套餐">
+  <div class="auth-card payment-card">
+    <button class="wxmodal-x" id="paymentModalX" aria-label="关闭">×</button>
+    <div class="wxmodal-kicker">ALPHADESK · CHECKOUT</div>
+    <h2>选择你的套餐</h2>
+    <p class="auth-sub">当前账号：<b id="currentAccount"></b></p>
+    <div id="planOptions" class="plan-options"><span class="muted">正在读取套餐…</span></div>
+    <p class="auth-message" id="paymentMessage"></p>
+    <button class="auth-switch" id="paymentOrders" type="button">查看我的订单</button>
+    <div id="orderList" class="order-list" hidden></div>
+  </div>
+</div>
 <div class="lightbox" id="lightbox"><img src="" alt="截图" /></div>
 <div class="wxmodal" id="wxmodal" role="dialog" aria-modal="true" aria-label="联系微信">
   <div class="wxmodal-card">
@@ -620,6 +650,7 @@
 </div>
 <script src="plaza-config.js"></script>
 <script src="app.js"></script>
+<script src="account.js"></script>
 <script>
 (function(){
   var el = document.getElementById("dlTotal");
